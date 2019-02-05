@@ -38,17 +38,21 @@ public class Plateau {
 
     /**
      * Renvoie le jeu choisi
+     *
      * @param jeu 1 Recherche +/- , 2 Mastermind
      * @return jeu choisi
      */
     public int jeuChoisi(String jeu) {
 
-        switch (jeu){
-            case "recherche" : jeuChoisi= 1 ;
+        switch (jeu) {
+            case "recherche":
+                jeuChoisi = 1;
                 break;
-            case "mastermind" : jeuChoisi= 2 ;
+            case "mastermind":
+                jeuChoisi = 2;
                 break;
-            default : jeuChoisi= 0 ;
+            default:
+                jeuChoisi = 0;
                 break;
         }
         return jeuChoisi;
@@ -56,19 +60,24 @@ public class Plateau {
 
     /**
      * Renvoie le mode choisi pour le jeu
+     *
      * @param mode le mode de jeu choisi, 1 challenger, 2 defenseur ou 3 duel
      * @return le mode choisi
      */
     public int modeChoisi(String mode) {
 
-        switch (mode){
-            case "challenger" : modeChoisi= 1 ;
+        switch (mode) {
+            case "challenger":
+                modeChoisi = 1;
                 break;
-            case "defenseur" : modeChoisi= 2 ;
+            case "defenseur":
+                modeChoisi = 2;
                 break;
-            case "duel" : modeChoisi= 3 ;
+            case "duel":
+                modeChoisi = 3;
                 break;
-            default : modeChoisi= 0 ;
+            default:
+                modeChoisi = 0;
                 break;
         }
         return modeChoisi;
