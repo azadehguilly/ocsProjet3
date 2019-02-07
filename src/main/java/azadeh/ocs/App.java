@@ -1,15 +1,21 @@
 package azadeh.ocs;
 
+import org.apache.log4j.Logger;
+
 import java.util.Scanner;
 
-/**
- * Hello world!
- */
+
+
 public class App {
+
+    private static Logger logger = Logger.getLogger(App.class);
+
+
     public static void main(String[] args) {
         int nbCase = 4;
         int nbEssais = 3;
         int rejouer;
+
 
         Scanner sc = new Scanner(System.in);
 
@@ -17,7 +23,7 @@ public class App {
 
         do {
             jeu.lanceJeuRecherche();
-            System.out.println("Vouslez vous rejouer le même jeu? tappez 1");
+            logger.debug("Vouslez vous rejouer le même jeu? tappez 1***********");
             System.out.println("Vouslez vous lancer un autre jeu (retour à l'écran de choix des jeux du début)? tappez 2");
             System.out.println("Vouslez vous quitter l'application? tapper 3");
             rejouer = sc.nextInt();

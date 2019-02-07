@@ -10,7 +10,8 @@ public class JeuRecherche {
     private int[] solution;
     private int[] resultat;
     private String[] affichage;
-
+    private String valeurEntree;
+    private String [] tableauValeurEntree;
 
     Scanner sc = new Scanner(System.in);
 
@@ -21,6 +22,8 @@ public class JeuRecherche {
         this.solution = new int[this.nbCase];
         this.resultat = new int[this.nbCase];
         this.affichage = new String[this.nbCase];
+        this.valeurEntree = null;
+        this.tableauValeurEntree = new String[this.nbCase];
     }
 
 
@@ -38,12 +41,28 @@ public class JeuRecherche {
 
     /**
      * Demande de rentrer n chiffres pour le jeu de recherche
-     * met à jour l'attribut resultat
+     * si on tape des lettres ou moins de chiffre ou plus de chiffre, on affiche une message d'erreur
+     * met à jour le resultat
      */
     public void demandeCombinaisonRecherche() {
+        boolean isIntValue;
+        do{
+            sc = new Scanner(System.in);
+            System.out.println("Taper un chiffre de " + this.nbCase+ " charactères");
+            isIntValue = sc.hasNextInt() ;
+            if ( isIntValue ){
+                this.valeurEntree = sc.next();
+                if( this.valeurEntree.length()==this.nbCase) {
+                    this.tableauValeurEntree = this.valeurEntree.split("");
+                    break;
+                }
+            }
+            System.out.println("La valeur saisie est fausse" );
+            System.out.println("Tapez que des chiffres de " + this.nbCase+ " charactères");
+
+        }while ( !isIntValue || this.valeurEntree.length()!= this.nbCase);
         for (int i = 0; i < this.nbCase; i++) {
-            System.out.println("Tapper un chiffre de 0 à 9");
-            this.resultat[i] = sc.nextInt();
+            this.resultat[i] = Integer.parseInt(this.tableauValeurEntree[i]);
         }
     }
 
