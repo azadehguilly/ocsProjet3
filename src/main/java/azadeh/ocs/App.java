@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import java.util.Scanner;
 
 
-
 public class App {
 
     private static Logger logger = Logger.getLogger(App.class);
@@ -13,17 +12,19 @@ public class App {
 
     public static void main(String[] args) {
         int nbCase = 4;
-        int nbEssais = 3;
+        int nbEssais = 10;
         int rejouer;
 
 
         Scanner sc = new Scanner(System.in);
 
-        JeuRecherche jeu = new JeuRecherche(nbCase, nbEssais);
+        JeuRechercheChallenger jeuRechercheChallenger = new JeuRechercheChallenger(nbCase, nbEssais);
+        JeuRechercheDefenseur jeuRechercheDefenseur = new JeuRechercheDefenseur(nbCase, nbEssais);
 
         do {
-            jeu.lanceJeuRecherche();
-            logger.debug("Vouslez vous rejouer le même jeu? tappez 1***********");
+            jeuRechercheChallenger.lanceJeuRechercheChallenger();
+            jeuRechercheDefenseur.lanceJeuRechercheDefenseur();
+            logger.debug("Vouslez vous rejouer le même jeu? tappez 1");
             System.out.println("Vouslez vous lancer un autre jeu (retour à l'écran de choix des jeux du début)? tappez 2");
             System.out.println("Vouslez vous quitter l'application? tapper 3");
             rejouer = sc.nextInt();
