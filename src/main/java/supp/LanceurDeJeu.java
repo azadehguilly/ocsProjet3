@@ -1,4 +1,4 @@
-package azadeh.ocs.supp;
+package supp;
 
 import java.util.ArrayList;
 import java.util.List;

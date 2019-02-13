@@ -1,6 +1,5 @@
-package azadeh.ocs;
+/*package supp;
 
-import azadeh.ocs.affichage.AfficheResultatRecherche;
 import azadeh.ocs.affichage.DemandeInfoRecherche;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -15,9 +14,11 @@ public class JeuRechercheDefenseur extends Jeu {
 
     /**
      * fait une proposition pour le jeu de recherche en prenant en compte la proposition du tour precedent
-     * met à jour l'attribut solution
-     */
-    public void lanceRandomRechercheParrapportTourPrecedent() {
+     * met à jour l'attribut proposition
+     * @return un tableau de propotiotion en plus de mettre à jour l'attribut
+
+    public int[] lanceRandomRechercheParrapportTourPrecedent() {
+        int[] resultat = new int[this.nbCase];
         for (int i = 0; i < this.nbCase; i++) {
             if (this.proposition[i] == -1) {
                 this.proposition[i] = ThreadLocalRandom.current().nextInt(min[i], max[i] + 1);
@@ -30,15 +31,37 @@ public class JeuRechercheDefenseur extends Jeu {
             } else // (this.proposition[i] == this.solution[i]) {
                 this.proposition[i] = this.proposition[i];
         }
+        resultat = this.proposition;
+        return resultat;
     }
 
     /**
-     * lance un tour de jeu de recherche en mode Defenseur
-     */
+     * Choisir la Solution
+
+    @Override
+    public int[] choisirSolution( int nombrebCase){
+        DemandeInfoRecherche demandeInfoRecherche = new DemandeInfoRecherche();
+        int[] resultat = demandeInfoRecherche.demandecombinaisonRecherche(nombrebCase);
+        return resultat;
+    }
+
+    /**
+     * Fait une proposition pour un tour
+
+
+    public int[] faitUneProposition(int nombrebCase) {
+        int[] resultat = new int[nombrebCase];
+        resultat = this.lanceRandomRechercheParrapportTourPrecedent();
+        return resultat;
+    }
+
+
+
     public void lanceJeuRechercheDefenseur() {
         DemandeInfoRecherche demandeInfoRecherche = new DemandeInfoRecherche();
-        this.solution = demandeInfoRecherche.demandecombinaisonRecherche(this.nbCase);
         AfficheResultatRecherche afficheResultatRecherche = new AfficheResultatRecherche();
+
+        this.solution = demandeInfoRecherche.demandecombinaisonRecherche(this.nbCase);
 
         int i = 0;
         while (!isPartieGagnante() && i < nbEssais) {
@@ -51,4 +74,6 @@ public class JeuRechercheDefenseur extends Jeu {
         afficheResultatRecherche.AfficheResultatJeu(isPartieGagnante());
     }
 
+
 }
+*/

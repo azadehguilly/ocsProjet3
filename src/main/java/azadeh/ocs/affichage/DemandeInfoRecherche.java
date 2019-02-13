@@ -1,6 +1,10 @@
 package azadeh.ocs.affichage;
 
+import azadeh.ocs.Combinaison;
+
 import java.util.Scanner;
+
+import static azadeh.ocs.App.nbCase;
 
 public class DemandeInfoRecherche {
 
@@ -8,14 +12,13 @@ public class DemandeInfoRecherche {
     Scanner sc = new Scanner(System.in);
 
     /**
-     * Demande de entrer n chiffres pour le jeux de Recherche
+     * Demande d'une combinaison
      * si on tape des lettres ou moins de chiffre ou plus de chiffre, on affiche une message d'erreur
-     * @param nbCase nombre de case
-     * @return un tableau d'int resultat
+     * @return une Combinaison
      */
-    public int[] demandecombinaisonRecherche(int nbCase) {
+    public Combinaison demandecombinaisonRecherche() {
         boolean isIntValue;
-        int[] resultat = new int[nbCase];
+        Combinaison resultat = new Combinaison();
         String valeurEntree = null;
         String[] tableauValeurEntree = null;
 
@@ -35,7 +38,7 @@ public class DemandeInfoRecherche {
 
         } while (!isIntValue || valeurEntree.length() != nbCase);
         for (int i = 0; i < nbCase; i++) {
-            resultat[i] = Integer.parseInt(tableauValeurEntree[i]);
+            resultat.combinaison[i] = tableauValeurEntree[i];
         }
         return resultat;
     }

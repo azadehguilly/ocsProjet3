@@ -1,6 +1,6 @@
 package azadeh.ocs.supp;
 
-import azadeh.ocs.supp.LanceurDeJeu;
+import supp.LanceurDeJeu;
 import org.junit.Assert;
 import org.junit.Test;
 

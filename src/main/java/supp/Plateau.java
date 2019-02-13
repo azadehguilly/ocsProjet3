@@ -1,4 +1,4 @@
-package azadeh.ocs;
+package supp;
 
 public class Plateau {
 

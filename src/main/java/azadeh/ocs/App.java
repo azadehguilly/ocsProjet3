@@ -6,28 +6,38 @@ import java.util.Scanner;
 
 
 public class App {
+    public static int nbCase = 4;
+    public static int nbEssais = 10;
+    public static String[] symbole = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+
 
     private static Logger logger = Logger.getLogger(App.class);
 
 
     public static void main(String[] args) {
-        int nbCase = 4;
-        int nbEssais = 10;
+
         int rejouer;
 
 
         Scanner sc = new Scanner(System.in);
 
-        JeuRechercheChallenger jeuRechercheChallenger = new JeuRechercheChallenger(nbCase, nbEssais);
-        JeuRechercheDefenseur jeuRechercheDefenseur = new JeuRechercheDefenseur(nbCase, nbEssais);
+        // JeuRechercheChallenger jeuRechercheChallenger = new JeuRechercheChallenger(nbCase, nbEssais);
+        //JeuRechercheDefenseur jeuRechercheDefenseur = new JeuRechercheDefenseur(nbCase, nbEssais);
 
         do {
-            jeuRechercheChallenger.lanceJeuRechercheChallenger();
-            jeuRechercheDefenseur.lanceJeuRechercheDefenseur();
+            //jeuRechercheChallenger.lanceJeuRecherche();
+            //jeuRechercheDefenseur.lanceJeuRecherche();
+            Jeu jeu = new Jeu();
+            jeu.lanceJeuRecherche("D");
             logger.debug("Vouslez vous rejouer le même jeu? tappez 1");
             System.out.println("Vouslez vous lancer un autre jeu (retour à l'écran de choix des jeux du début)? tappez 2");
             System.out.println("Vouslez vous quitter l'application? tapper 3");
             rejouer = sc.nextInt();
+            if (rejouer == 1) {
+                //jeuRechercheChallenger = new JeuRechercheChallenger(nbCase, nbEssais);
+                //jeuRechercheDefenseur = new JeuRechercheDefenseur(nbCase, nbEssais);
+                jeu.lanceJeuRecherche("D");
+            }
         } while (rejouer == 1);
 
 
