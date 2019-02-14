@@ -1,46 +1,55 @@
 package azadeh.ocs;
 
-import azadeh.ocs.utilite.Conversion;
 import org.apache.commons.lang.RandomStringUtils;
 
-import static azadeh.ocs.App.nbCase;
-
-public class CodeurOrdinateur extends CodeurCommun implements Codeur {
+public class CodeurOrdinateur extends CodeurCommun implements ICodeur {
 
 
     /**
      * Générer la Solution gagnant
      */
-    @Override
-    public Combinaison genereLaSolutionGagnante(Possibilite possibilite) {
-        Combinaison combinaison = new Combinaison();
+
+    public Proposition genereLaSolutionGagnante() {
+        Proposition proposition = new Proposition();
         RandomStringUtils r = new RandomStringUtils();
-        for (int i = 0; i < possibilite.getMatricePossibilite().length; i++) {
+        /*for (int i = 0; i < possibilite.getMatricePossibilite().length; i++) {
             //for (int j = 0; j < possibilite.getMatricePossibilite()[i].length; j++)
-                combinaison.combinaison[i] = r.random(1, 0, possibilite.getMatricePossibilite()[i].length, false, true, Conversion.convertTableauStringEnTableauChar(possibilite.getMatricePossibilite()[i]));
+                proposition.proposition[i] = r.random(1, 0, possibilite.getMatricePossibilite()[i].length, false, true, Conversion.convertTableauStringEnTableauChar(possibilite.getMatricePossibilite()[i]));
         }
-        return combinaison;
+        */
+        return proposition;
     }
 
 
-
+    @Override
     /**
      * nous donne le resultat d'un tour pour le jeu de recherche
-     * met à jour la matrice de possibilité avec la derniereEvaluation
-     * @param Combinaison prop, Combinaison sol, Possibilité possib
+     *
+     * @ param Combinais on prop, Proposition sol
      * @return possibilite
      */
-    @Override
-    public Possibilite evaluerUneProposition(Combinaison prop, Combinaison sol, Possibilite possib) {
-        return super.evaluerUneProposition(prop, sol, possib);
+    public Resultat evaluerUneProposition(Proposition prop) {
+        Resultat resultat = new Resultat();
+        /*possibilite.matricePossibilite = possib.matricePossibilite;
+
+        for (int i = 0; i < nbCase; i++) {
+            if (prop.getCombinaison()[i].equals(sol.getCombinaison()[i]))
+                possibilite.derniereEvaluation[i] = "=";
+            else if (Integer.parseInt(prop.getCombinaison()[i]) < Integer.parseInt(sol.getCombinaison()[i]))
+                possibilite.derniereEvaluation[i] = "+";
+            else
+                possibilite.derniereEvaluation[i] = "-";
+        }
+        */
+        return resultat;
     }
 
         /**
          * Verifie si la séquance est trouvé.
          */
         @Override
-        public boolean isPartieGagnante (Combinaison prop, Combinaison sol){
-            return super.isPartieGagnante(prop, sol);
+        public boolean isPartieGagnante (Resultat resultat){
+            return super.isPartieGagnante(resultat);
         }
 
 

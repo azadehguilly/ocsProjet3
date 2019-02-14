@@ -2,40 +2,51 @@ package azadeh.ocs;
 
 import azadeh.ocs.affichage.DemandeInfoRecherche;
 
-import static azadeh.ocs.App.nbCase;
-
-public class CodeurHumain extends CodeurCommun implements Codeur {
+public class CodeurHumain {
 
 
     /**
      * Générer la Solution gagnant
-     */
-    @Override
-    public Combinaison genereLaSolutionGagnante(Possibilite possibilite) {
-        Combinaison combinaison = new Combinaison();
-        DemandeInfoRecherche demandeInfoRecherche = new DemandeInfoRecherche();
 
-        possibilite.initialiseMatricePossibilite();
-        combinaison = demandeInfoRecherche.demandecombinaisonRecherche();
-        return combinaison;
+    public Proposition genereLaSolutionGagnante() {
+        Proposition proposition = new Proposition();
+        DemandeInfoRecherche demandeInfoRecherche = new DemandeInfoRecherche();
+        proposition = demandeInfoRecherche.demandecombinaisonRecherche();
+        return proposition;
     }
 
 
     /**
      * nous donne le resultat d'un tour pour le jeu de recherche
      * met à jour la matrice de possibilité avec la derniereEvaluation
-     * @param Combinaison prop, Combinaison sol, Possibilité possib
+     * @ param Proposition prop, Proposition sol, Possibilité possib
      * @return possibilite
-     */
+
     @Override
-    public Possibilite evaluerUneProposition(Combinaison prop, Combinaison sol, Possibilite possib) {
-        return super.evaluerUneProposition(prop, sol, possib);
+    public Possibilite evaluerUneProposition(Proposition prop, Proposition sol, Possibilite possib) {
+        System.out.println("A faire pour un codeur Humain!!!!!!!!  modifier la methode !!!!!!!");
+
+        Possibilite possibilite = new Possibilite();
+        possibilite.matricePossibilite = possib.matricePossibilite;
+
+        for (int i = 0; i < nbCase; i++) {
+            if (prop.getCombinaison()[i].equals(sol.getCombinaison()[i]))
+                possibilite.derniereEvaluation[i] = "=";
+            else if (Integer.parseInt(prop.getCombinaison()[i]) < Integer.parseInt(sol.getCombinaison()[i]))
+                possibilite.derniereEvaluation[i] = "+";
+            else
+                possibilite.derniereEvaluation[i] = "-";
+        }
+
+        return possibilite;
+
+
     }
 
 
 
 /* @Override
-    public String[] evaluerUneProposition(Combinaison prop, Combinaison sol) {
+    public String[] evaluerUneProposition(Proposition prop, Proposition sol) {
         String[] evaluation = new String[nbCase];
         for (int i = 0; i < nbCase; i++) {
             if (prop.getCombinaison()[i].equals(sol.getCombinaison()[i])) evaluation[i] = "=";
@@ -50,9 +61,10 @@ public class CodeurHumain extends CodeurCommun implements Codeur {
 
     /**
      * Verifie si la séquance est trouvé.
-     */
+
     @Override
-    public boolean isPartieGagnante(Combinaison prop, Combinaison sol) {
+    public boolean isPartieGagnante(Proposition prop, Proposition sol) {
         return super.isPartieGagnante(prop, sol);
     }
+    */
 }

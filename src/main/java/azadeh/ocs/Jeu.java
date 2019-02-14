@@ -4,43 +4,47 @@ import azadeh.ocs.affichage.AfficheResultatRecherche;
 
 import static azadeh.ocs.App.nbEssais;
 
-public class Jeu {
+public class Jeu implements IJeu{
+
+    ICodeur codeur = null;
+    IDecodeur decodeur = null;
 
     public Jeu() {
     }
 
-    /**
-     * lance un tour de jeu de recherche
-     * mode D : defenseur ou C : Chellenger
-     */
-    public void lanceJeuRecherche(String mode) {
-        Codeur codeur = null;
-        Decodeaur decodeur = null;
-        switch (mode) {
-            case "D": { //defenseur
-                codeur = new CodeurHumain();
-                decodeur = new DecodeurOrdinateur();
-                break;
-            }
-            case "C": { //Challenger
-                codeur = new CodeurOrdinateur();
-                decodeur = new DecodeurHumain();
-                break;
-            }
-        }
 
-        Combinaison solution = new Combinaison();
-        Combinaison proposition = new Combinaison();
-        Possibilite possibilite = new Possibilite();
+    @Override
+    public void initialiser(int mode, int type) {
+        codeur = new CodeurOrdinateur();
+        decodeur = new DecodeurOrdinateur();
+    }
+
+    @Override
+    public void lancerPartie() {
         AfficheResultatRecherche afficheResultatRecherche = new AfficheResultatRecherche();
-        int i = 0;
-        solution = codeur.genereLaSolutionGagnante(possibilite);
+        Resultat resultat = null;
+        Proposition proposition = null;
+        Proposition solution = codeur.genereLaSolutionGagnante();
+        int i=0;
+        boolean solutionTrouvee = false;
         do {
-            proposition = decodeur.proposerUneCombinaison(possibilite);
-            possibilite = codeur.evaluerUneProposition(proposition, solution, possibilite);
-            afficheResultatRecherche.afficheResultatTour(possibilite, solution, proposition);
+            // Le decodeur fait une proposition
+            proposition = decodeur.proposerUneCombinaison(resultat);
+
+            System.out.println("Proposition: " + proposition.toString());
+
+            // La proposition est testée par le codeur qui retourne un résultat
+            resultat = codeur.evaluerUneProposition(proposition);
+
+            System.out.println("Résultat: " + resultat.toString());
+
+            //Tester si la combinaison a été trouvée
+            solutionTrouvee = codeur.equals(resultat);
+
             i++;
-        } while (!codeur.isPartieGagnante(proposition, solution) && i < nbEssais);
-        afficheResultatRecherche.AfficheResultatJeu(codeur.isPartieGagnante(proposition, solution));
+        } while (!solutionTrouvee && i < nbEssais);
+
+        afficheResultatRecherche.AfficheResultatJeu(solutionTrouvee);
+
     }
 }

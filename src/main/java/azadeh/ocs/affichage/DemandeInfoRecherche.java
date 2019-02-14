@@ -1,6 +1,6 @@
 package azadeh.ocs.affichage;
 
-import azadeh.ocs.Combinaison;
+import azadeh.ocs.Proposition;
 
 import java.util.Scanner;
 
@@ -14,11 +14,11 @@ public class DemandeInfoRecherche {
     /**
      * Demande d'une combinaison
      * si on tape des lettres ou moins de chiffre ou plus de chiffre, on affiche une message d'erreur
-     * @return une Combinaison
-     */
-    public Combinaison demandecombinaisonRecherche() {
+     * @return une Proposition
+
+    public Proposition demandecombinaisonRecherche() {
         boolean isIntValue;
-        Combinaison resultat = new Combinaison();
+        Proposition resultat = new Proposition();
         String valeurEntree = null;
         String[] tableauValeurEntree = null;
 
@@ -43,6 +43,6 @@ public class DemandeInfoRecherche {
         return resultat;
     }
 
-
+*/
 
 }

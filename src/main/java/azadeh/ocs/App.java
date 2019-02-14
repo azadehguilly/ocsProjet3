@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class App {
     public static int nbCase = 4;
     public static int nbEssais = 10;
-    public static String[] symbole = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    public static String[] symbols = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
 
     private static Logger logger = Logger.getLogger(App.class);
@@ -17,13 +17,26 @@ public class App {
     public static void main(String[] args) {
 
         int rejouer;
-
+/*
+        switch (mode) {
+            case "D": { //defenseur
+                codeur = new CodeurHumain();
+                decodeur = new DecodeurOrdinateur();
+                break;
+            }
+            case "C": { //Challenger
+                codeur = new CodeurOrdinateur();
+                decodeur = new DecodeurHumain();
+                break;
+            }
+        }
+        */
 
         Scanner sc = new Scanner(System.in);
 
         // JeuRechercheChallenger jeuRechercheChallenger = new JeuRechercheChallenger(nbCase, nbEssais);
         //JeuRechercheDefenseur jeuRechercheDefenseur = new JeuRechercheDefenseur(nbCase, nbEssais);
-
+/*
         do {
             //jeuRechercheChallenger.lanceJeuRecherche();
             //jeuRechercheDefenseur.lanceJeuRecherche();
@@ -39,7 +52,7 @@ public class App {
                 jeu.lanceJeuRecherche("D");
             }
         } while (rejouer == 1);
-
+*/
 
         //Mode développeur
         // boolean modeDeveloppeur = false;
