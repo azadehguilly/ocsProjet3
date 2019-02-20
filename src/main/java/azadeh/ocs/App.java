@@ -1,5 +1,6 @@
 package azadeh.ocs;
 
+import azadeh.ocs.affichage.DemandeInfoRecherche;
 import org.apache.log4j.Logger;
 
 import java.util.Scanner;
@@ -32,7 +33,7 @@ public class App {
         }
         */
 
-        Scanner sc = new Scanner(System.in);
+
 
         // JeuRechercheChallenger jeuRechercheChallenger = new JeuRechercheChallenger(nbCase, nbEssais);
         //JeuRechercheDefenseur jeuRechercheDefenseur = new JeuRechercheDefenseur(nbCase, nbEssais);
@@ -72,6 +73,26 @@ public class App {
         // 2. de lancer un autre jeu (retour à l'écran de choix des jeux du début)
         // 3.de quitter l'application
 
+
+
+        /* tester demandeInfoRecherche.demandecombinaisonRecherche()
+        DemandeInfoRecherche demandeInfoRecherche = new DemandeInfoRecherche();
+        Proposition proposition = new Proposition();
+        proposition = demandeInfoRecherche.demandecombinaisonRecherche();
+        System.out.println("la proposition tapper à l ecran est : " + proposition.toString());
+*/
+        /* tester demandeInfoRecherche.evaluerUnePropositionConsole()
+        Resultat resultat = new Resultat();
+        resultat = demandeInfoRecherche.evaluerUnePropositionConsole(proposition);
+        System.out.println("le resultat tapper à l ecran est : " + resultat.toString());
+*/
+
+
+
+        IJeu jeu = new Jeu();
+        jeu.initialiser(0, 0);
+
+        jeu.lancerPartie();
 
     }
 }

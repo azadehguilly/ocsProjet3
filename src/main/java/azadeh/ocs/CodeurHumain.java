@@ -2,69 +2,46 @@ package azadeh.ocs;
 
 import azadeh.ocs.affichage.DemandeInfoRecherche;
 
-public class CodeurHumain {
+public class CodeurHumain extends CodeurCommun implements ICodeur {
 
-
-    /**
-     * Générer la Solution gagnant
-
-    public Proposition genereLaSolutionGagnante() {
-        Proposition proposition = new Proposition();
-        DemandeInfoRecherche demandeInfoRecherche = new DemandeInfoRecherche();
-        proposition = demandeInfoRecherche.demandecombinaisonRecherche();
-        return proposition;
-    }
-
+    private Proposition solutionGagnante;
 
     /**
-     * nous donne le resultat d'un tour pour le jeu de recherche
-     * met à jour la matrice de possibilité avec la derniereEvaluation
-     * @ param Proposition prop, Proposition sol, Possibilité possib
-     * @return possibilite
-
+     * Générer la Solution gagnante par console
+     */
     @Override
-    public Possibilite evaluerUneProposition(Proposition prop, Proposition sol, Possibilite possib) {
-        System.out.println("A faire pour un codeur Humain!!!!!!!!  modifier la methode !!!!!!!");
-
-        Possibilite possibilite = new Possibilite();
-        possibilite.matricePossibilite = possib.matricePossibilite;
-
-        for (int i = 0; i < nbCase; i++) {
-            if (prop.getCombinaison()[i].equals(sol.getCombinaison()[i]))
-                possibilite.derniereEvaluation[i] = "=";
-            else if (Integer.parseInt(prop.getCombinaison()[i]) < Integer.parseInt(sol.getCombinaison()[i]))
-                possibilite.derniereEvaluation[i] = "+";
-            else
-                possibilite.derniereEvaluation[i] = "-";
-        }
-
-        return possibilite;
-
-
+    public void genereLaSolutionGagnante() {
+        this.solutionGagnante = new Proposition();
+        DemandeInfoRecherche demandeInfoRecherche = new DemandeInfoRecherche();
+        this.solutionGagnante = demandeInfoRecherche.demandecombinaisonRecherche();
     }
 
-
-
-/* @Override
-    public String[] evaluerUneProposition(Proposition prop, Proposition sol) {
-        String[] evaluation = new String[nbCase];
-        for (int i = 0; i < nbCase; i++) {
-            if (prop.getCombinaison()[i].equals(sol.getCombinaison()[i])) evaluation[i] = "=";
-            else if (Integer.parseInt(prop.getCombinaison()[i]) < Integer.parseInt(sol.getCombinaison()[i]))
-                evaluation[i] = "+";
-            else evaluation[i] = "-";
-        }
-        return evaluation;
-    }*/
-
-
+    /**
+     * Nous donne le resultat d'un tour pour le jeu de recherche
+     *
+     * @return un résultat
+     */
+    @Override
+    public Resultat evaluerUneProposition(Proposition prop) {
+        Resultat resultat = new Resultat();
+        DemandeInfoRecherche demandeInfoRecherche = new DemandeInfoRecherche();
+        resultat = demandeInfoRecherche.evaluerUnePropositionConsole(prop);
+        return resultat;
+    }
 
     /**
      * Verifie si la séquance est trouvé.
+     */
+    @Override
+    public boolean isPartieGagnante(Resultat resultat) {
+        return super.isPartieGagnante(resultat);
+    }
+
 
     @Override
-    public boolean isPartieGagnante(Proposition prop, Proposition sol) {
-        return super.isPartieGagnante(prop, sol);
+    public Proposition getSolutionGagnante() {
+        return solutionGagnante;
     }
-    */
+
+
 }

@@ -1,56 +1,68 @@
 package azadeh.ocs;
 
-import org.apache.commons.lang.RandomStringUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+
+import static azadeh.ocs.App.nbCase;
 
 public class CodeurOrdinateur extends CodeurCommun implements ICodeur {
 
+    private Proposition solutionGagnante;
 
     /**
-     * Générer la Solution gagnant
+     * Générer la Solution gagnant aleatoir pour le jeux Recherche +/-
      */
+    @Override
+    public void genereLaSolutionGagnante() {
+        this.solutionGagnante = new Proposition();
+        String symbolRandom = new String();
+        List<String> symbolsAtColumn = new ArrayList<>();
 
-    public Proposition genereLaSolutionGagnante() {
-        Proposition proposition = new Proposition();
-        RandomStringUtils r = new RandomStringUtils();
-        /*for (int i = 0; i < possibilite.getMatricePossibilite().length; i++) {
-            //for (int j = 0; j < possibilite.getMatricePossibilite()[i].length; j++)
-                proposition.proposition[i] = r.random(1, 0, possibilite.getMatricePossibilite()[i].length, false, true, Conversion.convertTableauStringEnTableauChar(possibilite.getMatricePossibilite()[i]));
+        for (int i = 1; i <= nbCase; i++) {
+            int rand = ThreadLocalRandom.current().nextInt(0, 10);
+            symbolRandom = Integer.toString(rand);
+            symbolsAtColumn.add(symbolRandom);
         }
-        */
-        return proposition;
+        this.solutionGagnante.setPropositions(symbolsAtColumn);
     }
 
 
-    @Override
     /**
-     * nous donne le resultat d'un tour pour le jeu de recherche
+     * Nous donne le resultat d'un tour pour le jeu de recherche
      *
-     * @ param Combinais on prop, Proposition sol
-     * @return possibilite
+     * @param prop
+     * @return un résultat
      */
+    @Override
     public Resultat evaluerUneProposition(Proposition prop) {
         Resultat resultat = new Resultat();
-        /*possibilite.matricePossibilite = possib.matricePossibilite;
 
         for (int i = 0; i < nbCase; i++) {
-            if (prop.getCombinaison()[i].equals(sol.getCombinaison()[i]))
-                possibilite.derniereEvaluation[i] = "=";
-            else if (Integer.parseInt(prop.getCombinaison()[i]) < Integer.parseInt(sol.getCombinaison()[i]))
-                possibilite.derniereEvaluation[i] = "+";
+            if (prop.getPropositions().get(i).equals(solutionGagnante.getPropositions().get(i)))
+                resultat.getResultats().add(i, "=");
+            else if (Integer.parseInt(prop.getPropositions().get(i)) < Integer.parseInt(solutionGagnante.getPropositions().get(i)))
+                resultat.getResultats().add(i, "+");
             else
-                possibilite.derniereEvaluation[i] = "-";
+                resultat.getResultats().add(i, "-");
         }
-        */
         return resultat;
     }
 
-        /**
-         * Verifie si la séquance est trouvé.
-         */
-        @Override
-        public boolean isPartieGagnante (Resultat resultat){
-            return super.isPartieGagnante(resultat);
-        }
-
-
+    /**
+     * Verifie si la séquance est trouvé.
+     */
+    @Override
+    public boolean isPartieGagnante(Resultat resultat) {
+        return super.isPartieGagnante(resultat);
     }
+
+    @Override
+    public Proposition getSolutionGagnante() {
+        return solutionGagnante;
+    }
+
+    public void setSolutionGagnante(Proposition solutionGagnante) {
+        this.solutionGagnante = solutionGagnante;
+    }
+}
