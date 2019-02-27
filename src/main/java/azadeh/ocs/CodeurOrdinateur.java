@@ -5,13 +5,26 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static azadeh.ocs.App.nbCase;
+import static azadeh.ocs.App.symbols;
 
+/**
+ * Le codeur est celui qui joue le role de defenseur pour le jeu Recherche +/-
+ * CodeurOrdinateur est donc l'ordinateur qui joue le role de codeur.
+ *
+ * @author Azadeh GUILLY
+ * @version 1.0
+ */
 public class CodeurOrdinateur extends CodeurCommun implements ICodeur {
 
+    /**
+     * solutionGagnante est un objet de type Proposition qui contient la solution gagnante
+     *
+     * @see Proposition
+     */
     private Proposition solutionGagnante;
 
     /**
-     * Générer la Solution gagnant aleatoir pour le jeux Recherche +/-
+     * Générer la Solution gagnante aleatoir
      */
     @Override
     public void genereLaSolutionGagnante() {
@@ -20,7 +33,7 @@ public class CodeurOrdinateur extends CodeurCommun implements ICodeur {
         List<String> symbolsAtColumn = new ArrayList<>();
 
         for (int i = 1; i <= nbCase; i++) {
-            int rand = ThreadLocalRandom.current().nextInt(0, 10);
+            int rand = ThreadLocalRandom.current().nextInt(0, symbols.length);
             symbolRandom = Integer.toString(rand);
             symbolsAtColumn.add(symbolRandom);
         }
@@ -29,10 +42,11 @@ public class CodeurOrdinateur extends CodeurCommun implements ICodeur {
 
 
     /**
-     * Nous donne le resultat d'un tour pour le jeu de recherche
+     * Cette méthode nous donne le resultat d'un tour sous la forme +, - et =
      *
-     * @param prop
-     * @return un résultat
+     * @param prop est la proposition de l'attaquant.
+     * @return un objet de type Resultat
+     * @see Resultat
      */
     @Override
     public Resultat evaluerUneProposition(Proposition prop) {
@@ -49,20 +63,56 @@ public class CodeurOrdinateur extends CodeurCommun implements ICodeur {
         return resultat;
     }
 
+
     /**
-     * Verifie si la séquance est trouvé.
+     * Verifie si le resultat est gagnant.
+     *
+     * @param resultat
+     * @return
      */
     @Override
     public boolean isPartieGagnante(Resultat resultat) {
         return super.isPartieGagnante(resultat);
     }
 
+    /**
+     * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente ICodeur.
+     *
+     * @param resultat
+     * @return false
+     */
+    @Override
+    public boolean isPartieGagnante(int resultat) {
+        return false;
+    }
+
+    /**
+     * Getteur de la solutionGagnante
+     *
+     * @return
+     */
     @Override
     public Proposition getSolutionGagnante() {
         return solutionGagnante;
     }
 
+    /**
+     * Setteur de la solutionGagnante
+     * @param solutionGagnante
+     */
     public void setSolutionGagnante(Proposition solutionGagnante) {
         this.solutionGagnante = solutionGagnante;
+    }
+
+    /**
+     * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente ICodeur.
+     *
+     * @param solutionGagnante
+     * @param prop
+     * @return 0
+     */
+    @Override
+    public int calculScore(Proposition solutionGagnante, Proposition prop) {
+        return 0;
     }
 }

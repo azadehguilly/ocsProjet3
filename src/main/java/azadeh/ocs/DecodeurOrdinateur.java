@@ -1,14 +1,39 @@
 package azadeh.ocs;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static azadeh.ocs.App.nbCase;
 
+/**
+ * Le decodeur est celui qui joue le role d'attaquant pour le jeu Recherche +/-
+ * DecodeurOrdinateur est donc un ordinateur qui joue le role de decodeur.
+ *
+ * @author Azadeh GUILLY
+ * @version 1.0
+ */
 public class DecodeurOrdinateur implements IDecodeur {
+    /**
+     * LOGGER sert à la mise en place des log
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(DecodeurOrdinateurMastermind.class.getName());
 
+    /**
+     * possibilite est un objet de type Possibilite qui contient toutes les possibilites.
+     *
+     * @see Possibilite
+     */
     private Possibilite possibilite;
+
+    /**
+     * derniereProposition est un objet de type Proposition qui contient la derniere proposition faite par l'attaquant
+     *
+     * @see Proposition
+     */
     private Proposition derniereProposition;
 
     /**
@@ -18,26 +43,37 @@ public class DecodeurOrdinateur implements IDecodeur {
      * @param possibilite
      */
     public DecodeurOrdinateur(Possibilite possibilite) {
-        possibilite.initialiseMatricePossibilite();
+        possibilite.initialiseToutesLesPossibilitesRecherche();
         this.possibilite = possibilite;
         this.derniereProposition = null;
     }
 
+    /**
+     * Constructeur
+     *
+     * @param possibilite
+     * @param derniereProposition
+     */
     public DecodeurOrdinateur(Possibilite possibilite, Proposition derniereProposition) {
         this.possibilite = possibilite;
         this.derniereProposition = derniereProposition;
     }
 
+    /**
+     * Constructeur
+     */
     public DecodeurOrdinateur() {
         this.possibilite = new Possibilite();
-        possibilite.initialiseMatricePossibilite();
+        possibilite.initialiseToutesLesPossibilitesRecherche();
         this.derniereProposition = null;
     }
 
     /**
-     * Propose une combinaison par rapport à un matrice de possibilité
+     * Met à jour la matrice des possibilité
+     * Fait une proposition par rapport à la nouvelle matrice des possibilités
      *
-     * @return combinaison
+     * @param resultat
+     * @return
      */
     @Override
     public Proposition proposerUneCombinaison(Resultat resultat) {
@@ -54,25 +90,26 @@ public class DecodeurOrdinateur implements IDecodeur {
     }
 
     /**
-     * Reduire les listes des prossibilités par rapport à un Resultat et une Proposition
+     * Reduire les prossibilités par rapport au resultat et la derniereProposition
      *
      * @param resultat
      */
     public void reduireLesPossibilites(Resultat resultat) {
         int numColonne = 0;
         for (String resultatColonne : resultat.getResultats()) {
-            //System.out.println("colonne: " +numColonne + " > " + resultatColonne);
-            String symbol = derniereProposition.symboleALaPosition(numColonne);
+            LOGGER.debug("colonne: " +numColonne + " > " + resultatColonne);
+            String symbol = this.derniereProposition.symboleALaPosition(numColonne);
 
             switch (resultatColonne) {
                 case "+":
-                    //System.out.println("Effacement symbole " + symbol + " à la position " + numColonne);
+                    // On efface les nombres de 0 jusqu'à la de valeur proposée inclus
+                    LOGGER.debug("Effacement symbole " + symbol + " à la position " + numColonne);
                     for (int valeurAEffacer = 0; valeurAEffacer <= Integer.valueOf(symbol); valeurAEffacer++) {
                         possibilite.effacerSymboleAtPossibilite(numColonne, Integer.toString(valeurAEffacer));
                     }
                     break;
                 case "-":
-                    // On efface les nombres de 0 à la valeur proposée
+                    // On efface les nombres de la valeur proposée inclus, au 9
                     for (int valeurAEffacer = Integer.valueOf(symbol); valeurAEffacer <= 9; valeurAEffacer++) {
                         possibilite.effacerSymboleAtPossibilite(numColonne, Integer.toString(valeurAEffacer));
                     }
@@ -83,14 +120,15 @@ public class DecodeurOrdinateur implements IDecodeur {
             }
             numColonne++;
         }
-        //System.out.println(derniereProposition.toString() + ">> Resultat: " + resultat.toString() + " > Nouvelle version de possibilités: " + possibilite);
+        LOGGER.debug(derniereProposition.toString() + ">> Resultat: " + resultat.toString() + " > Nouvelle version de possibilités: " + possibilite);
     }
 
 
     /**
-     * Proposer une combinaison parmis les possibilités existant
+     * Fait une proposition au hasard, parmis les possibilités existantes
+     * Normelement cette methode doit être private. Il a etait mis en public pour poivoir faire des tests unitaire dessus.
      *
-     * @param possibiliteActuel
+     * @param possibiliteActuel la liste des possibilites à cette instant
      * @return
      */
     public Proposition choisirUneCombinaison(Possibilite possibiliteActuel) {
@@ -108,8 +146,37 @@ public class DecodeurOrdinateur implements IDecodeur {
         return proposition;
     }
 
+    /**
+     * Setteur de derniereProposition
+     *
+     * @param derniereProposition
+     */
     @Override
     public void setDerniereProposition(Proposition derniereProposition) {
         this.derniereProposition = derniereProposition;
     }
+
+    /**
+     * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente IDecodeur.
+     *
+     * @param resultat
+     * @return null
+     */
+    @Override
+    public Proposition proposerUneCombinaison(int resultat) {
+        return null;
+    }
+
+    /**
+     * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente IDecodeur.
+     *
+     * @param listePropo
+     * @return null
+     */
+    @Override
+    public Proposition choisirUnPropositionAuHasard(List<Proposition> listePropo) {
+        return null;
+    }
+
+
 }

@@ -8,16 +8,34 @@ import java.util.List;
  */
 public class Resultat {
 
+    /**
+     * resultats est une liste de String qui contient +, - et =
+     */
     private List<String> resultats;
 
+    /**
+     * Constructeur
+     * Instancie le resultats à une nouvelle liste
+     */
     public Resultat() {
         resultats = new ArrayList<String>();
     }
 
+    /**
+     * Constructeur
+     * Instancie le resultats, avec une liste donnée en parametre
+     *
+     * @param resultats
+     */
     public Resultat(ArrayList<String> resultats) {
         this.resultats = new ArrayList<>(resultats);
     }
 
+    /**
+     * Afficher le resultat
+     *
+     * @return
+     */
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         int position = 0;
@@ -30,10 +48,18 @@ public class Resultat {
         return stringBuilder.toString();
     }
 
-    public List<String> getResultats(){
+    /**
+     * Getteur de resultats
+     * @return
+     */
+    public List<String> getResultats() {
         return resultats;
     }
 
+    /**
+     * Setteur de resultats
+     * @param resultats
+     */
     public void setResultats(List<String> resultats) {
         this.resultats = resultats;
     }

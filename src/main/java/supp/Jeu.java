@@ -2,8 +2,8 @@
 package supp;
 
 
-import azadeh.ocs.affichage.AfficheResultatRecherche;
-import azadeh.ocs.affichage.DemandeInfoRecherche;
+import azadeh.ocs.affichage.AfficheResultat;
+import azadeh.ocs.affichage.DemandeInfo;
 
 public class Jeu {
 
@@ -80,7 +80,7 @@ public class Jeu {
      * lance un tour de jeu de recherche en mode Defenseur
 
     public void lanceJeuRecherche() {
-        AfficheResultatRecherche afficheResultatRecherche = new AfficheResultatRecherche();
+        AfficheResultat afficheResultatRecherche = new AfficheResultat();
 
         this.solution = this.choisirSolution(this.nbCase);
         int i = 0;
@@ -91,7 +91,7 @@ public class Jeu {
             i++;
         }while (!isPartieGagnante() && i < nbEssais);
 
-        afficheResultatRecherche.AfficheResultatJeu(isPartieGagnante());
+        afficheResultatRecherche.afficheResultatJeu(isPartieGagnante());
 
     }
 

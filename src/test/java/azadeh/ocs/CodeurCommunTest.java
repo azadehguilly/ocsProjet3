@@ -14,6 +14,8 @@ public class CodeurCommunTest {
         CodeurOrdinateur codeur = new CodeurOrdinateur();
 
         ArrayList<String> initArrayList = new ArrayList<String>(Arrays.asList(new String[]{"+", "=", "-", "-"}));
+        // List<String> initArrayList = Arrays.asList("+", "=", "-", "-");
+
         Resultat resultat = new Resultat(initArrayList);
         //Act
         boolean isFound = codeur.isPartieGagnante(resultat);

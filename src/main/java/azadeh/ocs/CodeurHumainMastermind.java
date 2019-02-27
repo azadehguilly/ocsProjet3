@@ -3,14 +3,13 @@ package azadeh.ocs;
 import azadeh.ocs.affichage.DemandeInfo;
 
 /**
- * Le codeur est celui qui joue le role de defenseur pour le jeu Recherche +/-
- * CodeurHumain est donc un humain qui joue le role de codeur. Il donne des instruction par le console.
+ * Le codeur est celui qui joue le role de defenseur pour le jeu Mastermind
+ * CodeurHumainMastermind est donc un humain qui joue le role de codeur. Il donne des instruction par le console.
  *
  * @author Azadeh GUILLY
  * @version 1.0
  */
-public class CodeurHumain extends CodeurCommun implements ICodeur {
-
+public class CodeurHumainMastermind extends CodeurCommun implements ICodeur {
 
     /**
      * solutionGagnante est un objet de type Proposition qui contient la solution gagnante
@@ -26,33 +25,40 @@ public class CodeurHumain extends CodeurCommun implements ICodeur {
     public void genereLaSolutionGagnante() {
         this.solutionGagnante = new Proposition();
         DemandeInfo demandeInfo = new DemandeInfo();
-        this.solutionGagnante = demandeInfo.demandecombinaisonRecherche();
+        this.solutionGagnante = demandeInfo.demandecombinaisonMastermind();
     }
+
 
     /**
      * Cette méthode nous donne le resultat d'un tour
      *
-     * @param prop est la proposition de l'attaquant.
-     * @return un objet de type Resultat
-     * @see Resultat
+     * @param solutionGagnante La solution gagnante
+     * @param prop             La proposition de l'attaquant
+     * @return le resultat sous forme d'un entier de deux digits
      */
     @Override
-    public Resultat evaluerUneProposition(Proposition prop) {
-        Resultat resultat = new Resultat();
+    public int calculScore(Proposition solutionGagnante, Proposition prop) {
+        int resultat = 0;
         DemandeInfo demandeInfo = new DemandeInfo();
-        resultat = demandeInfo.evaluerUnePropositionConsoleRecherche(prop);
+        int resultatOrdi = prop.calculScore(this.solutionGagnante, prop);
+        do {
+            resultat = demandeInfo.evaluerUnePropositionConsoleMastermind(prop);
+            if (resultat != resultatOrdi)
+                System.out.println("Le resultat que vous avez donné est incorrect, refaite votre calcul : ");
+        } while (resultat != resultatOrdi);
+
         return resultat;
     }
 
 
     /**
-     * Verifie si le resultat est gagnant.
+     * Verifie si la resultat est gagnante.
      *
      * @param resultat
      * @return
      */
     @Override
-    public boolean isPartieGagnante(Resultat resultat) {
+    public boolean isPartieGagnante(int resultat) {
         return super.isPartieGagnante(resultat);
     }
 
@@ -74,20 +80,19 @@ public class CodeurHumain extends CodeurCommun implements ICodeur {
      * @return false
      */
     @Override
-    public boolean isPartieGagnante(int resultat) {
+    public boolean isPartieGagnante(Resultat resultat) {
         return false;
     }
 
     /**
      * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente ICodeur.
      *
-     * @param solutionGagnante
      * @param prop
-     * @return 0
+     * @return null
      */
     @Override
-    public int calculScore(Proposition solutionGagnante, Proposition prop) {
-        return 0;
+    public Resultat evaluerUneProposition(Proposition prop) {
+        return null;
     }
 
 }

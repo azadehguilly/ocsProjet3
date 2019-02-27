@@ -19,7 +19,7 @@ public class ResultatTest {
         Resultat resultat = new Resultat(initArrayList);
 
         //Assert
-        Assert.assertEquals("Constructeur ) partir d'un Arrayist","+ = - -", resultat.toString());
+        Assert.assertEquals("Constructeur ) partir d'un Arrayist","+=--", resultat.toString());
 
     }
 

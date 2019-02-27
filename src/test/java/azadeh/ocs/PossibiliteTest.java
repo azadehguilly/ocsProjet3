@@ -15,7 +15,7 @@ public class PossibiliteTest {
         Possibilite possibilite = new Possibilite();
 
         //Act
-        possibilite.initialiseMatricePossibilite();
+        possibilite.initialiseToutesLesPossibilitesRecherche();
 
         //Assert
         String representation = possibilite.toString();
@@ -39,4 +39,9 @@ public class PossibiliteTest {
         String representation = possibilite.toString();
         Assert.assertEquals("Method effacerSymboleAtPossibilite works as expected", "0,1,3,4,5,6,7,8,9", possibilite.toString());
     }
+
+
+
+
+
 }

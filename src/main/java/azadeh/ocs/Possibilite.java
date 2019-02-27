@@ -7,21 +7,28 @@ import static azadeh.ocs.App.nbCase;
 import static azadeh.ocs.App.symbols;
 
 /**
- * Representation de toutes les combinaisons possible
+ * Representation de toutes les combinaisons possible pour le jeu Recherche +/-
  */
 public class Possibilite {
-
+    /**
+     * possibilites est la matrice de possibilités
+     * Elle a nbCase lignes. Chasue ligne represente, les possibilité d'un chiffre de la solution gagnante
+     */
     private List<List<String>> possibilites;
 
-
+    /**
+     * Constructeur
+     */
     public Possibilite() {
         possibilites = new ArrayList();
     }
 
+
     /**
-     * Initialisation de toute les possibilités
+     * Initialisation de toutes les possibilités
+     * On initialise la matrice des possibilites à nbCase lignes et pour chaque ligne de 0 à 9 chiffres
      */
-    public void initialiseMatricePossibilite() {
+    public void initialiseToutesLesPossibilitesRecherche() {
         for (int i = 1; i <= nbCase; i++) {
             List<String> symbolsAtColumn = new ArrayList<>();
             for (int j = 0; j < symbols.length; j++) {
@@ -32,12 +39,18 @@ public class Possibilite {
     }
 
 
+    /**
+     * Getteur de possibilites
+     *
+     * @return
+     */
     public List<List<String>> getPossibilites() {
         return possibilites;
     }
 
     /**
      * Ajouter une liste à la liste des possibilités
+     * Cette methode est utilisée pour les tests unitaires
      *
      * @param possibilite
      */
@@ -96,31 +109,34 @@ public class Possibilite {
 
     /**
      * Renvoie la longeur de la nieme liste des possibilités
+     *
      * @param numeroColonne
      * @return
      */
-    public int tailleListeALaPositionDonnee(int numeroColonne){
+    public int tailleListeALaPositionDonnee(int numeroColonne) {
         int taille = this.possibilites.get(numeroColonne).size();
         return taille;
     }
 
     /**
      * Renvoie la borne minimum de la nieme liste des possibilités
+     *
      * @param numeroColonne
      * @return
      */
-    public int minListeALaPositionDonnee(int numeroColonne){
+    public int minListeALaPositionDonnee(int numeroColonne) {
         int minList = Integer.parseInt(this.possibilites.get(numeroColonne).get(0));
         return minList;
     }
 
     /**
      * Renvoie la borne maximum de la nieme liste des possibilités
+     *
      * @param numeroColonne
      * @return
      */
-    public int maxListeALaPositionDonnee(int numeroColonne){
-        int maxList = Integer.parseInt(this.possibilites.get(numeroColonne).get(tailleListeALaPositionDonnee(numeroColonne)-1));
+    public int maxListeALaPositionDonnee(int numeroColonne) {
+        int maxList = Integer.parseInt(this.possibilites.get(numeroColonne).get(tailleListeALaPositionDonnee(numeroColonne) - 1));
         return maxList;
     }
 }

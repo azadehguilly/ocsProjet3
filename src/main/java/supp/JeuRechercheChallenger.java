@@ -2,7 +2,7 @@
 package supp;
 
 
-import azadeh.ocs.affichage.DemandeInfoRecherche;
+import azadeh.ocs.affichage.DemandeInfo;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -40,7 +40,7 @@ public class JeuRechercheChallenger extends Jeu {
 
 
     public int[] faitUneProposition(int nombrebCase) {
-        DemandeInfoRecherche demandeInfoRecherche = new DemandeInfoRecherche();
+        DemandeInfo demandeInfoRecherche = new DemandeInfo();
         int[] resultat = demandeInfoRecherche.demandecombinaisonRecherche(nombrebCase);
         return resultat;
     }
@@ -50,8 +50,8 @@ public class JeuRechercheChallenger extends Jeu {
      * lance un tour de jeu de recherche en mode Cahllenger
 
     public void lanceJeuRechercheChallenger() {
-        DemandeInfoRecherche demandeInfoRecherche = new DemandeInfoRecherche();
-        AfficheResultatRecherche afficheResultatRecherche = new AfficheResultatRecherche();
+        DemandeInfo demandeInfoRecherche = new DemandeInfo();
+        AfficheResultat afficheResultatRecherche = new AfficheResultat();
 
         this.lanceRandomRecherche();
 
@@ -63,7 +63,7 @@ public class JeuRechercheChallenger extends Jeu {
             i++;
         } while (!isPartieGagnante() && i < nbEssais);
 
-        afficheResultatRecherche.AfficheResultatJeu(isPartieGagnante());
+        afficheResultatRecherche.afficheResultatJeu(isPartieGagnante());
     }
 
 
@@ -71,8 +71,8 @@ public class JeuRechercheChallenger extends Jeu {
      * lance un tour de jeu de recherche en mode Cahllenger
 
     public void lanceJeuRechercheChallenger() {
-        DemandeInfoRecherche demandeInfoRecherche = new DemandeInfoRecherche();
-        AfficheResultatRecherche afficheResultatRecherche = new AfficheResultatRecherche();
+        DemandeInfo demandeInfoRecherche = new DemandeInfo();
+        AfficheResultat afficheResultatRecherche = new AfficheResultat();
 
         this.lanceRandomRecherche();
 
@@ -84,7 +84,7 @@ public class JeuRechercheChallenger extends Jeu {
             i++;
         } while (!isPartieGagnante() && i < nbEssais);
 
-        afficheResultatRecherche.AfficheResultatJeu(isPartieGagnante());
+        afficheResultatRecherche.afficheResultatJeu(isPartieGagnante());
     }
 
 }

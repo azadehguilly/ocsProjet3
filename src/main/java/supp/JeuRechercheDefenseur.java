@@ -1,6 +1,6 @@
 /*package supp;
 
-import azadeh.ocs.affichage.DemandeInfoRecherche;
+import azadeh.ocs.affichage.DemandeInfo;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -40,7 +40,7 @@ public class JeuRechercheDefenseur extends Jeu {
 
     @Override
     public int[] choisirSolution( int nombrebCase){
-        DemandeInfoRecherche demandeInfoRecherche = new DemandeInfoRecherche();
+        DemandeInfo demandeInfoRecherche = new DemandeInfo();
         int[] resultat = demandeInfoRecherche.demandecombinaisonRecherche(nombrebCase);
         return resultat;
     }
@@ -58,8 +58,8 @@ public class JeuRechercheDefenseur extends Jeu {
 
 
     public void lanceJeuRechercheDefenseur() {
-        DemandeInfoRecherche demandeInfoRecherche = new DemandeInfoRecherche();
-        AfficheResultatRecherche afficheResultatRecherche = new AfficheResultatRecherche();
+        DemandeInfo demandeInfoRecherche = new DemandeInfo();
+        AfficheResultat afficheResultatRecherche = new AfficheResultat();
 
         this.solution = demandeInfoRecherche.demandecombinaisonRecherche(this.nbCase);
 
@@ -71,7 +71,7 @@ public class JeuRechercheDefenseur extends Jeu {
             i++;
         }
 
-        afficheResultatRecherche.AfficheResultatJeu(isPartieGagnante());
+        afficheResultatRecherche.afficheResultatJeu(isPartieGagnante());
     }
 
 
