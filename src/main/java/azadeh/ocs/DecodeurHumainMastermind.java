@@ -21,11 +21,9 @@ public class DecodeurHumainMastermind implements IDecodeur {
      * @see Proposition
      */
     @Override
-    public Proposition proposerUneCombinaison(int resultat) {
-        Proposition proposition = new Proposition();
+    public Proposition proposerUneCombinaison(IResultat resultat) {
         DemandeInfo demandeInfo = new DemandeInfo();
-        proposition = demandeInfo.demandecombinaisonMastermind();
-        return proposition;
+        return demandeInfo.demandecombinaisonMastermind();
     }
 
     /**
@@ -43,14 +41,14 @@ public class DecodeurHumainMastermind implements IDecodeur {
     /**
      * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente IDecodeur.
      *
-     * @param resultat
+     * @param rechercheResultat
      * @return null
-     */
+
     @Override
-    public Proposition proposerUneCombinaison(Resultat resultat) {
+    public Proposition proposerUneCombinaison(RechercheResultat rechercheResultat) {
         return null;
     }
-
+     */
     /**
      * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente IDecodeur.
      *

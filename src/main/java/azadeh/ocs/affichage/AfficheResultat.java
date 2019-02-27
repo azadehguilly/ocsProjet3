@@ -46,7 +46,7 @@ public class AfficheResultat {
         }
     }
     */
-
+/*
     public String modifieResultatMastermindIntToString(int resultat) {
         String  resultatAAfficher = "";
         String resultatString = Integer.toString(resultat);
@@ -74,5 +74,5 @@ public class AfficheResultat {
         }
         return resultatAAfficher;
     }
-
+*/
 }

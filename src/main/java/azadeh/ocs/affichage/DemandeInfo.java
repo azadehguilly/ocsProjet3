@@ -1,7 +1,7 @@
 package azadeh.ocs.affichage;
 
 import azadeh.ocs.Proposition;
-import azadeh.ocs.Resultat;
+import azadeh.ocs.RechercheResultat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -105,11 +105,11 @@ public class DemandeInfo {
      * L'utilisateur indique pour chaque chiffre de la proposition si le chiffre est plus grand (+), plus petit (-) ou si c'est le bon chiffre (=).
      *
      * @param prop Proposition à évaluer
-     * @return un objet Resultat sous forme de +, - ou =
-     * @see Resultat
+     * @return un objet RechercheResultat sous forme de +, - ou =
+     * @see RechercheResultat
      */
-    public Resultat evaluerUnePropositionConsoleRecherche(Proposition prop) {
-        Resultat resultat = new Resultat();
+    public RechercheResultat evaluerUnePropositionConsoleRecherche(Proposition prop) {
+        RechercheResultat rechercheResultat = new RechercheResultat();
         Scanner sc;
         String valeurEntree = null;
         List<String> symbolsAtColumn = new ArrayList<>();
@@ -142,9 +142,9 @@ public class DemandeInfo {
 
 
         symbolsAtColumn = Arrays.asList(valeurEntree.split(""));
-        resultat.setResultats(symbolsAtColumn);
+        rechercheResultat.setResultats(symbolsAtColumn);
 
-        return resultat;
+        return rechercheResultat;
     }
 
     /**

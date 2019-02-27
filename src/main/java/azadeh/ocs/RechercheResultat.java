@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Representation d'un résultat sous la forme d'une séquence de + ou - ou =
  */
-public class Resultat {
+public class RechercheResultat implements IResultat {
 
     /**
      * resultats est une liste de String qui contient +, - et =
@@ -17,7 +17,7 @@ public class Resultat {
      * Constructeur
      * Instancie le resultats à une nouvelle liste
      */
-    public Resultat() {
+    public RechercheResultat() {
         resultats = new ArrayList<String>();
     }
 
@@ -27,7 +27,7 @@ public class Resultat {
      *
      * @param resultats
      */
-    public Resultat(ArrayList<String> resultats) {
+    public RechercheResultat(ArrayList<String> resultats) {
         this.resultats = new ArrayList<>(resultats);
     }
 

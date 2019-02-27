@@ -39,7 +39,7 @@ public class DecodeurOrdinateurTest {
         possibilite.addListToPossibilite(intPossibilite4);
 
         ArrayList<String> initArrayList = new ArrayList<String>(Arrays.asList(new String[]{"+", "-", "=", "-"}));
-        Resultat resultat = new Resultat(initArrayList);
+        RechercheResultat rechercheResultat = new RechercheResultat(initArrayList);
 
         ArrayList<String> intDernierePropos = new ArrayList<String>(Arrays.asList(new String[]{"4", "4", "3", "7"}));
         Proposition dernierePropo = new Proposition(intDernierePropos);
@@ -47,11 +47,11 @@ public class DecodeurOrdinateurTest {
         DecodeurOrdinateur decodeur = new DecodeurOrdinateur(possibilite, dernierePropo);
 
         //Act
-        decodeur.proposerUneCombinaison(resultat);
+        decodeur.proposerUneCombinaison(rechercheResultat);
         System.out.println(possibilite.toString());
 
         //Assert
-        System.out.println("La proposition est : " + decodeur.proposerUneCombinaison(resultat).toString());
+        System.out.println("La proposition est : " + decodeur.proposerUneCombinaison(rechercheResultat).toString());
     }
 
 
@@ -63,7 +63,7 @@ public class DecodeurOrdinateurTest {
         possibilite.addListToPossibilite(intPossibilite);
 
         ArrayList<String> initArrayList = new ArrayList<String>(Arrays.asList(new String[]{"+"}));
-        Resultat resultat = new Resultat(initArrayList);
+        RechercheResultat rechercheResultat = new RechercheResultat(initArrayList);
 
         ArrayList<String> intDernierePropos = new ArrayList<String>(Arrays.asList(new String[]{"4"}));
         Proposition dernierePropo = new Proposition(intDernierePropos);
@@ -71,7 +71,7 @@ public class DecodeurOrdinateurTest {
         DecodeurOrdinateur decodeur = new DecodeurOrdinateur(possibilite, dernierePropo);
 
         // Act
-        decodeur.reduireLesPossibilites(resultat);
+        decodeur.reduireLesPossibilites(rechercheResultat);
         System.out.println(possibilite.toString());
 
         // Assert
@@ -87,7 +87,7 @@ public class DecodeurOrdinateurTest {
         possibilite.addListToPossibilite(intPossibilite);
 
         ArrayList<String> initArrayList = new ArrayList<String>(Arrays.asList(new String[]{"-"}));
-        Resultat resultat = new Resultat(initArrayList);
+        RechercheResultat rechercheResultat = new RechercheResultat(initArrayList);
 
         ArrayList<String> intDernierePropos = new ArrayList<String>(Arrays.asList(new String[]{"4"}));
         Proposition dernierePropo = new Proposition(intDernierePropos);
@@ -95,7 +95,7 @@ public class DecodeurOrdinateurTest {
         DecodeurOrdinateur decodeur = new DecodeurOrdinateur(possibilite, dernierePropo);
 
         // Act
-        decodeur.reduireLesPossibilites(resultat);
+        decodeur.reduireLesPossibilites(rechercheResultat);
         System.out.println(possibilite.toString());
 
         // Assert
@@ -112,7 +112,7 @@ public class DecodeurOrdinateurTest {
         possibilite.addListToPossibilite(intPossibilite);
 
         ArrayList<String> initArrayList = new ArrayList<String>(Arrays.asList(new String[]{"="}));
-        Resultat resultat = new Resultat(initArrayList);
+        RechercheResultat rechercheResultat = new RechercheResultat(initArrayList);
 
         ArrayList<String> intDernierePropos = new ArrayList<String>(Arrays.asList(new String[]{"4"}));
         Proposition dernierePropo = new Proposition(intDernierePropos);
@@ -120,7 +120,7 @@ public class DecodeurOrdinateurTest {
         DecodeurOrdinateur decodeur = new DecodeurOrdinateur(possibilite, dernierePropo);
 
         // Act
-        decodeur.reduireLesPossibilites(resultat);
+        decodeur.reduireLesPossibilites(rechercheResultat);
         System.out.println(possibilite.toString());
 
         // Assert
@@ -142,7 +142,7 @@ public class DecodeurOrdinateurTest {
         possibilite.addListToPossibilite(intPossibilite4);
 
         ArrayList<String> initArrayList = new ArrayList<String>(Arrays.asList(new String[]{"+", "-","+","-"}));
-        Resultat resultat = new Resultat(initArrayList);
+        RechercheResultat rechercheResultat = new RechercheResultat(initArrayList);
 
         ArrayList<String> intDernierePropos = new ArrayList<String>(Arrays.asList(new String[]{"4", "4", "3", "9"}));
         Proposition dernierePropo = new Proposition(intDernierePropos);
@@ -150,7 +150,7 @@ public class DecodeurOrdinateurTest {
         DecodeurOrdinateur decodeur = new DecodeurOrdinateur(possibilite, dernierePropo);
 
         // Act
-        decodeur.reduireLesPossibilites(resultat);
+        decodeur.reduireLesPossibilites(rechercheResultat);
         System.out.println(possibilite.toString());
 
         // Assert

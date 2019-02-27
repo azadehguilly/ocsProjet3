@@ -1,5 +1,8 @@
 package azadeh.ocs;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +13,11 @@ import static azadeh.ocs.App.symbols;
  * Representation de toutes les combinaisons possible pour le jeu Recherche +/-
  */
 public class Possibilite {
+
+    /**
+     * LOGGER sert à la mise en place des log
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(DecodeurOrdinateurMastermind.class.getName());
     /**
      * possibilites est la matrice de possibilités
      * Elle a nbCase lignes. Chasue ligne represente, les possibilité d'un chiffre de la solution gagnante
@@ -125,6 +133,10 @@ public class Possibilite {
      * @return
      */
     public int minListeALaPositionDonnee(int numeroColonne) {
+        if (possibilites.get(numeroColonne).size() == 0) {
+            LOGGER.error("Impossible de trouver une solution, les resultats que vous avez donné sont incorrects. Vous avez triché ;)");
+            throw new JeuException("Impossible de trouver une solution, les resultats que vous avez donné sont incorrects. Vous avez triché ;)");
+        }
         int minList = Integer.parseInt(this.possibilites.get(numeroColonne).get(0));
         return minList;
     }
@@ -136,6 +148,11 @@ public class Possibilite {
      * @return
      */
     public int maxListeALaPositionDonnee(int numeroColonne) {
+        if (possibilites.get(numeroColonne).size() == 0) {
+            LOGGER.error("Impossible de trouver une solution, les resultats que vous avez donné sont incorrects, Vous avez triché ;)");
+            throw new JeuException("Impossible de trouver une solution, les resultats que vous avez donné sont incorrects");
+        }
+
         int maxList = Integer.parseInt(this.possibilites.get(numeroColonne).get(tailleListeALaPositionDonnee(numeroColonne) - 1));
         return maxList;
     }

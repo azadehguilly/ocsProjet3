@@ -79,46 +79,46 @@ public class CodeurOrdinateurMastermind extends CodeurCommun implements ICodeur 
      *
      * @param resultat
      * @return
-     */
+*/
     @Override
-    public boolean isPartieGagnante(int resultat) {
-        return super.isPartieGagnante(resultat);
+    public boolean isPartieGagnante(IResultat resultat) {
+        return super.isPartieGagnante((MastermindResultat) resultat);
     }
 
     /**
      * Cette méthode nous donne le resultat d'un tour sous la forme d'un entier de 2 digits. le chiffre des dizaines étant égal au nombre de chiffre bien placés (pion rouge) et le chiffre des unités à celui des chiffres présents (pions blanches)
      *
-     * @param solutionGagnante
+     * @param solGagnante
      * @param prop
      * @return
      */
     @Override
-    public int calculScore(Proposition solutionGagnante, Proposition prop) {
+    public IResultat evaluerUneProposition(Proposition prop) {
         Proposition proposition = new Proposition();
         int resultat = proposition.calculScore(this.solutionGagnante, prop);
-        return resultat;
+        return new MastermindResultat(resultat);
     }
 
     /**
      * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente ICodeur.
      *
-     * @param resultat
+     * @param rechercheResultat
      * @return false
-     */
+
     @Override
-    public boolean isPartieGagnante(Resultat resultat) {
+    public boolean isPartieGagnante(RechercheResultat rechercheResultat) {
         return false;
     }
-
+*/
     /**
      * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente ICodeur.
      *
      * @param prop
      * @return null
-     */
+
     @Override
-    public Resultat evaluerUneProposition(Proposition prop) {
+    public RechercheResultat evaluerUneProposition(Proposition prop) {
         return null;
     }
-
+*/
 }

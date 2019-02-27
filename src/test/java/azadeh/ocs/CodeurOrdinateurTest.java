@@ -28,7 +28,7 @@ public class CodeurOrdinateurTest {
         CodeurOrdinateur codeur = new CodeurOrdinateur();
         Proposition sol = new Proposition();
         Proposition prop = new Proposition();
-        Resultat res = new Resultat();
+        IResultat res = new RechercheResultat();
         ArrayList<String> initArrayList = new ArrayList<String>(Arrays.asList(new String[]{"1", "2", "3", "4"}));
 
         //Act
@@ -47,7 +47,7 @@ public class CodeurOrdinateurTest {
         CodeurOrdinateur codeur = new CodeurOrdinateur();
         Proposition sol = new Proposition();
         Proposition prop = new Proposition();
-        Resultat res = new Resultat();
+        IResultat res = new RechercheResultat();
         ArrayList<String> initArrayListSol = new ArrayList<String>(Arrays.asList(new String[]{"5", "5", "6", "9"}));
         ArrayList<String> initArrayListProp = new ArrayList<String>(Arrays.asList(new String[]{"1", "5", "8", "4"}));
 

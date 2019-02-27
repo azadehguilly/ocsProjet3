@@ -46,7 +46,7 @@ public class DecodeurOrdinateurMastermindTest {
 
         Proposition sol = new Proposition();
         Proposition prop = new Proposition();
-        int resultat;
+        IResultat resultat;
         ArrayList<String> initArrayListSol = new ArrayList<String>(Arrays.asList(new String[]{"1", "0", "2"}));
         ArrayList<String> initArrayListProp = new ArrayList<String>(Arrays.asList(new String[]{"0", "0", "0"}));
 
@@ -56,7 +56,7 @@ public class DecodeurOrdinateurMastermindTest {
         prop.setPropositions(initArrayListProp);
         decodeur.derniereProposition = prop;
 
-        resultat = codeur.calculScore(sol,prop);
+        resultat = codeur.evaluerUneProposition(prop);
         System.out.println("resultat doit etre egale a 10 : " + resultat);
 
         //Act
@@ -75,7 +75,7 @@ public class DecodeurOrdinateurMastermindTest {
         CodeurOrdinateurMastermind codeur = new CodeurOrdinateurMastermind();
 
         Proposition sol = new Proposition();
-        int resultat=-1;
+        IResultat resultat=null;
         ArrayList<String> initArrayListSol = new ArrayList<String>(Arrays.asList(new String[]{"1", "0", "2"}));
 
         sol.setPropositions(initArrayListSol);
@@ -84,7 +84,7 @@ public class DecodeurOrdinateurMastermindTest {
         //Act
         Proposition prop = new Proposition();
         prop = decodeur.proposerUneCombinaison(resultat);
-        resultat = codeur.calculScore(sol,prop);
+        resultat = codeur.evaluerUneProposition(prop);
 
         //Assert
         System.out.println("Pour la solution : "+  sol.toString()+ " et la proposition : "+ prop.toString() +" le resultat est egale à : " + resultat);

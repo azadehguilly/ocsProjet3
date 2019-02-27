@@ -72,31 +72,31 @@ public class DecodeurOrdinateur implements IDecodeur {
      * Met à jour la matrice des possibilité
      * Fait une proposition par rapport à la nouvelle matrice des possibilités
      *
-     * @param resultat
+     * @param rechercheResultat
      * @return
      */
     @Override
-    public Proposition proposerUneCombinaison(Resultat resultat) {
+    public Proposition proposerUneCombinaison(IResultat rechercheResultat) {
         Proposition proposition = new Proposition();
 
-        if (resultat != null)
-            // Premiere etape: eliminer les possibilites non valides sur la base du resultat et de la derniere proposition
-            reduireLesPossibilites(resultat);
+        if (rechercheResultat != null)
+            // Premiere etape: eliminer les possibilites non valides sur la base du rechercheResultat et de la derniere proposition
+            reduireLesPossibilites((RechercheResultat) rechercheResultat);
 
         // Seconde etape: choisir une combinaison à partir des possibilites restantes
         proposition = choisirUneCombinaison(this.possibilite);
-
+        this.derniereProposition = proposition;
         return proposition;
     }
 
     /**
-     * Reduire les prossibilités par rapport au resultat et la derniereProposition
+     * Reduire les prossibilités par rapport au rechercheResultat et la derniereProposition
      *
-     * @param resultat
+     * @param rechercheResultat
      */
-    public void reduireLesPossibilites(Resultat resultat) {
+    public void reduireLesPossibilites(RechercheResultat rechercheResultat) {
         int numColonne = 0;
-        for (String resultatColonne : resultat.getResultats()) {
+        for (String resultatColonne : rechercheResultat.getResultats()) {
             LOGGER.debug("colonne: " +numColonne + " > " + resultatColonne);
             String symbol = this.derniereProposition.symboleALaPosition(numColonne);
 
@@ -120,7 +120,7 @@ public class DecodeurOrdinateur implements IDecodeur {
             }
             numColonne++;
         }
-        LOGGER.debug(derniereProposition.toString() + ">> Resultat: " + resultat.toString() + " > Nouvelle version de possibilités: " + possibilite);
+        LOGGER.debug(derniereProposition.toString() + ">> RechercheResultat: " + rechercheResultat.toString() + " > Nouvelle version de possibilités: " + possibilite);
     }
 
 
@@ -161,12 +161,12 @@ public class DecodeurOrdinateur implements IDecodeur {
      *
      * @param resultat
      * @return null
-     */
+
     @Override
     public Proposition proposerUneCombinaison(int resultat) {
         return null;
     }
-
+     */
     /**
      * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente IDecodeur.
      *

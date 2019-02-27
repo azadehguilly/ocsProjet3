@@ -56,11 +56,11 @@ public class Jeu implements IJeu {
         }
 
     }
-
+/*
     @Override
     public void lancerPartieRecherche() {
         AfficheResultat afficheResultat = new AfficheResultat();
-        Resultat resultat = null;
+        IResultat rechercheResultat = null;
         Proposition proposition = null;
         codeur.genereLaSolutionGagnante();
         if (modeDeveloppeur) {
@@ -71,18 +71,15 @@ public class Jeu implements IJeu {
         boolean solutionTrouvee = false;
         do {
             // Le decodeur fait une proposition
-            proposition = decodeur.proposerUneCombinaison(resultat);
-            decodeur.setDerniereProposition(proposition);
-            //System.out.println("Proposition: " + proposition.toString());
+            proposition = decodeur.proposerUneCombinaison(rechercheResultat);
 
             // La proposition est testée par le codeur qui retourne un résultat
-            resultat = codeur.evaluerUneProposition(proposition);
-            //System.out.println("Résultat: " + resultat.toString());
+            rechercheResultat = codeur.evaluerUneProposition(proposition);
 
-            System.out.println("Proposition : " + proposition.toString() + " -> Réponse : " + resultat.toString());
+            System.out.println("Proposition : " + proposition.toString() + " -> Réponse : " + rechercheResultat.toString());
 
             //Tester si la combinaison a été trouvée
-            solutionTrouvee = codeur.isPartieGagnante(resultat);
+            solutionTrouvee = codeur.isPartieGagnante(rechercheResultat);
             //System.out.println("sol trouvé : " + solutionTrouvee);
 
             i++;
@@ -91,12 +88,12 @@ public class Jeu implements IJeu {
         afficheResultat.afficheResultatJeu(solutionTrouvee);
 
     }
-
+*/
 
     @Override
-    public void lancerPartieMastermind() {
+    public void lancerPartie() {
         AfficheResultat afficheResultat = new AfficheResultat();
-        int resultat = -1; //j'initialise à -1 car 0 a une autre signification. C'est a dire pour la proposition faite, aucun symbole est bien. cad ni pion rouge, ni blanc.
+        IResultat resultat = null;
         Proposition proposition = null;
         codeur.genereLaSolutionGagnante();
         if (modeDeveloppeur) {
@@ -108,14 +105,12 @@ public class Jeu implements IJeu {
         do {
             // Le decodeur fait une proposition
             proposition = decodeur.proposerUneCombinaison(resultat);
-            //System.out.println("Proposition: " + proposition.toString());
 
             // La proposition est testée par le codeur qui retourne un résultat
-            resultat = codeur.calculScore(codeur.getSolutionGagnante(), proposition);
-            //System.out.println("Résultat: " + resultat);
-            //afficheResultat.modifieResultatMastermindIntToString(resultat);
+            resultat = codeur.evaluerUneProposition(proposition);
 
-            System.out.println("Proposition : " + proposition.toString() + " -> Réponse : " + afficheResultat.modifieResultatMastermindIntToString(resultat));
+
+            System.out.println("Proposition : " + proposition.toString() + " -> Réponse : " + resultat.toString());
 
             //Tester si la combinaison a été trouvée
             solutionTrouvee = codeur.isPartieGagnante(resultat);

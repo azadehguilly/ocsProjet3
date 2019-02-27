@@ -57,16 +57,16 @@ public class DecodeurOrdinateurMastermind implements IDecodeur {
      * @param resultat
      * @return combinaison
      */
-    public Proposition proposerUneCombinaison(int resultat) {
+    public Proposition proposerUneCombinaison(IResultat resultat) {
         List<String> symbolsAtColumn = new ArrayList<>();
         Random rand = new Random();
         List<Proposition> nouvelleListePropositions = new LinkedList<Proposition>(this.listePropositions);
 
         LOGGER.debug("Avant la suppression, la taille de la nouvelle liste est  : " + nouvelleListePropositions.size());
 
-        if (resultat != -1) {
+        if (resultat != null) {
             //eliminer les possibiilités qui non pas le meme resultat
-            nouvelleListePropositions = reduireLaListeProposition(resultat, this.listePropositions);
+            nouvelleListePropositions = reduireLaListeProposition(((MastermindResultat)resultat).getResultat(), this.listePropositions);
             this.listePropositions = nouvelleListePropositions;
         }
         LOGGER.debug("Apres la suppression, la taille de la nouvelle liste est  : " + nouvelleListePropositions.size());
@@ -168,12 +168,12 @@ public class DecodeurOrdinateurMastermind implements IDecodeur {
     /**
      * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente IDecodeur.
      *
-     * @param resultat
+     * @param rechercheResultat
      * @return null
-     */
+
     @Override
-    public Proposition proposerUneCombinaison(Resultat resultat) {
+    public Proposition proposerUneCombinaison(RechercheResultat rechercheResultat) {
         return null;
     }
-
+     */
 }

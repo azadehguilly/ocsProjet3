@@ -12,10 +12,10 @@ public interface IDecodeur {
      * Tout d'abord elle reduit la matrice des possibilités
      * Ensuite elle fait une proposition par rapport à la nouvelle matrice des possibilités
      *
-     * @param resultat
+     * @param rechercheResultat
      * @return
      */
-    public Proposition proposerUneCombinaison(Resultat resultat);
+    public Proposition proposerUneCombinaison(IResultat rechercheResultat);
 
     /**
      * Setteur de derniereProposition
@@ -34,7 +34,7 @@ public interface IDecodeur {
      * @param resultat
      * @return combinaison
      */
-    public Proposition proposerUneCombinaison(int resultat);
+    //public Proposition proposerUneCombinaison(int resultat);
 
     /**
      * Choisir une proposition au hasard dans la listePropo

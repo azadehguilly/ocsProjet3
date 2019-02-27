@@ -16,9 +16,9 @@ public class CodeurCommunTest {
         ArrayList<String> initArrayList = new ArrayList<String>(Arrays.asList(new String[]{"+", "=", "-", "-"}));
         // List<String> initArrayList = Arrays.asList("+", "=", "-", "-");
 
-        Resultat resultat = new Resultat(initArrayList);
+        RechercheResultat rechercheResultat = new RechercheResultat(initArrayList);
         //Act
-        boolean isFound = codeur.isPartieGagnante(resultat);
+        boolean isFound = codeur.isPartieGagnante(rechercheResultat);
         //Assert
         Assert.assertTrue("Verif partie gagnante", !isFound);
 
@@ -30,9 +30,9 @@ public class CodeurCommunTest {
         CodeurOrdinateur codeur = new CodeurOrdinateur();
 
         ArrayList<String> initArrayList = new ArrayList<String>(Arrays.asList(new String[]{"=", "=", "=", "="}));
-        Resultat resultat = new Resultat(initArrayList);
+        RechercheResultat rechercheResultat = new RechercheResultat(initArrayList);
         //Act
-        boolean isFound = codeur.isPartieGagnante(resultat);
+        boolean isFound = codeur.isPartieGagnante(rechercheResultat);
         //Assert
         Assert.assertTrue("Verif partie gagnante", isFound);
 

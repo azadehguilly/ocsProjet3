@@ -2,6 +2,8 @@ package azadeh.ocs;
 
 import azadeh.ocs.affichage.DemandeInfo;
 
+import static azadeh.ocs.App.nbCase;
+
 /**
  * Le codeur est celui qui joue le role de defenseur pour le jeu Recherche +/-
  * CodeurHumain est donc un humain qui joue le role de codeur. Il donne des instruction par le console.
@@ -33,27 +35,25 @@ public class CodeurHumain extends CodeurCommun implements ICodeur {
      * Cette méthode nous donne le resultat d'un tour
      *
      * @param prop est la proposition de l'attaquant.
-     * @return un objet de type Resultat
-     * @see Resultat
+     * @return un objet de type RechercheResultat
+     * @see RechercheResultat
      */
     @Override
-    public Resultat evaluerUneProposition(Proposition prop) {
-        Resultat resultat = new Resultat();
+    public IResultat evaluerUneProposition(Proposition prop) {
         DemandeInfo demandeInfo = new DemandeInfo();
-        resultat = demandeInfo.evaluerUnePropositionConsoleRecherche(prop);
-        return resultat;
+        return demandeInfo.evaluerUnePropositionConsoleRecherche(prop);
     }
 
 
     /**
-     * Verifie si le resultat est gagnant.
+     * Verifie si le rechercheResultat est gagnant.
      *
-     * @param resultat
+     * @param rechercheResultat
      * @return
      */
     @Override
-    public boolean isPartieGagnante(Resultat resultat) {
-        return super.isPartieGagnante(resultat);
+    public boolean isPartieGagnante(IResultat rechercheResultat) {
+        return super.isPartieGagnante((RechercheResultat) rechercheResultat);
     }
 
     /**
@@ -72,22 +72,22 @@ public class CodeurHumain extends CodeurCommun implements ICodeur {
      *
      * @param resultat
      * @return false
-     */
+
     @Override
     public boolean isPartieGagnante(int resultat) {
         return false;
     }
-
+     */
     /**
      * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente ICodeur.
      *
      * @param solutionGagnante
      * @param prop
      * @return 0
-     */
+
     @Override
     public int calculScore(Proposition solutionGagnante, Proposition prop) {
         return 0;
     }
-
+     */
 }

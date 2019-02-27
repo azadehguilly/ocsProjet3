@@ -45,34 +45,34 @@ public class CodeurOrdinateur extends CodeurCommun implements ICodeur {
      * Cette méthode nous donne le resultat d'un tour sous la forme +, - et =
      *
      * @param prop est la proposition de l'attaquant.
-     * @return un objet de type Resultat
-     * @see Resultat
+     * @return un objet de type RechercheResultat
+     * @see RechercheResultat
      */
     @Override
-    public Resultat evaluerUneProposition(Proposition prop) {
-        Resultat resultat = new Resultat();
+    public IResultat evaluerUneProposition(Proposition prop) {
+        RechercheResultat rechercheResultat = new RechercheResultat();
 
         for (int i = 0; i < nbCase; i++) {
-            if (prop.getPropositions().get(i).equals(solutionGagnante.getPropositions().get(i)))
-                resultat.getResultats().add(i, "=");
-            else if (Integer.parseInt(prop.getPropositions().get(i)) < Integer.parseInt(solutionGagnante.getPropositions().get(i)))
-                resultat.getResultats().add(i, "+");
+            if (prop.getPropositions().get(i).equals(this.solutionGagnante.getPropositions().get(i)))
+                rechercheResultat.getResultats().add(i, "=");
+            else if (Integer.parseInt(prop.getPropositions().get(i)) < Integer.parseInt(this.solutionGagnante.getPropositions().get(i)))
+                rechercheResultat.getResultats().add(i, "+");
             else
-                resultat.getResultats().add(i, "-");
+                rechercheResultat.getResultats().add(i, "-");
         }
-        return resultat;
+        return rechercheResultat;
     }
 
 
     /**
-     * Verifie si le resultat est gagnant.
+     * Verifie si le rechercheResultat est gagnant.
      *
-     * @param resultat
+     * @param rechercheResultat
      * @return
      */
     @Override
-    public boolean isPartieGagnante(Resultat resultat) {
-        return super.isPartieGagnante(resultat);
+    public boolean isPartieGagnante(IResultat rechercheResultat) {
+        return super.isPartieGagnante((RechercheResultat) rechercheResultat);
     }
 
     /**
@@ -80,12 +80,12 @@ public class CodeurOrdinateur extends CodeurCommun implements ICodeur {
      *
      * @param resultat
      * @return false
-     */
+
     @Override
     public boolean isPartieGagnante(int resultat) {
         return false;
     }
-
+*/
     /**
      * Getteur de la solutionGagnante
      *
@@ -110,9 +110,10 @@ public class CodeurOrdinateur extends CodeurCommun implements ICodeur {
      * @param solutionGagnante
      * @param prop
      * @return 0
-     */
+
     @Override
     public int calculScore(Proposition solutionGagnante, Proposition prop) {
         return 0;
     }
+    */
 }

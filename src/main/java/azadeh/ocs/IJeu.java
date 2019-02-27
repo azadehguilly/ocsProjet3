@@ -8,6 +8,5 @@ package azadeh.ocs;
 public interface IJeu {
 
     public void initialiser(int mode, int type);
-    public void lancerPartieRecherche();
-    public void lancerPartieMastermind();
+    public void lancerPartie();
 }

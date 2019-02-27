@@ -10,7 +10,7 @@ public class JeuTest {
         IJeu jeu = new Jeu();
         jeu.initialiser(0, 0);
 
-        jeu.lancerPartieRecherche();
+        jeu.lancerPartie();
 
 
     }

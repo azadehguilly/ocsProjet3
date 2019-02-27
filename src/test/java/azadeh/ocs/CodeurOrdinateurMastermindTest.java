@@ -27,7 +27,7 @@ public class CodeurOrdinateurMastermindTest {
         CodeurOrdinateurMastermind codeur = new CodeurOrdinateurMastermind();
         Proposition sol = new Proposition();
         Proposition prop = new Proposition();
-        int res;
+        IResultat res;
         //ArrayList<String> initArrayListSol = new ArrayList<String>(Arrays.asList(new String[]{"3", "1", "3", "2"}));
         //ArrayList<String> initArrayListProp = new ArrayList<String>(Arrays.asList(new String[]{"2", "3", "3", "0"}));
         ArrayList<String> initArrayListSol = new ArrayList<String>(Arrays.asList(new String[]{"1", "0", "2"}));
@@ -36,10 +36,10 @@ public class CodeurOrdinateurMastermindTest {
         sol.setPropositions(initArrayListSol);
         codeur.setSolutionGagnante(sol);
         prop.setPropositions(initArrayListProp);
-        res = codeur.calculScore(sol,prop);
-        System.out.println("le score est : " + res);
+        res = codeur.evaluerUneProposition(prop);
+        System.out.println("le score est : " + res.toString());
         //Assert
-        Assert.assertEquals("evaluerUneProposition 10", 10, res);
+        Assert.assertEquals("evaluerUneProposition 10", 10, res.toString());
     }
 
 
@@ -50,7 +50,7 @@ public class CodeurOrdinateurMastermindTest {
         CodeurOrdinateurMastermind codeur = new CodeurOrdinateurMastermind();
         Proposition sol = new Proposition();
         Proposition prop = new Proposition();
-        int res;
+        IResultat res;
        // ArrayList<String> initArrayListSol = new ArrayList<String>(Arrays.asList(new String[]{"3", "1", "3", "2"}));
         //ArrayList<String> initArrayListProp = new ArrayList<String>(Arrays.asList(new String[]{"3", "1", "3", "2"}));
         ArrayList<String> initArrayListSol = new ArrayList<String>(Arrays.asList(new String[]{"1", "0", "2"}));
@@ -59,10 +59,10 @@ public class CodeurOrdinateurMastermindTest {
         sol.setPropositions(initArrayListSol);
         codeur.setSolutionGagnante(sol);
         prop.setPropositions(initArrayListProp);
-        res = codeur.calculScore(sol,prop);
-        System.out.println("le score est : " + res);
+        res = codeur.evaluerUneProposition(prop);
+        System.out.println("le score est : " + res.toString());
         //Assert
-        Assert.assertEquals("evaluerUneProposition 30", 30, res);
+        Assert.assertEquals("evaluerUneProposition 30", 30, res.toString());
     }
 
     @Test
@@ -71,7 +71,7 @@ public class CodeurOrdinateurMastermindTest {
         CodeurOrdinateurMastermind codeur = new CodeurOrdinateurMastermind();
         Proposition sol = new Proposition();
         Proposition prop = new Proposition();
-        int res;
+        IResultat res;
         //ArrayList<String> initArrayListSol = new ArrayList<String>(Arrays.asList(new String[]{"3", "1", "3", "2"}));
         //ArrayList<String> initArrayListProp = new ArrayList<String>(Arrays.asList(new String[]{"2", "3", "3", "0"}));
         ArrayList<String> initArrayListSol = new ArrayList<String>(Arrays.asList(new String[]{"1", "1", "0"}));
@@ -80,10 +80,10 @@ public class CodeurOrdinateurMastermindTest {
         sol.setPropositions(initArrayListSol);
         codeur.setSolutionGagnante(sol);
         prop.setPropositions(initArrayListProp);
-        res = codeur.calculScore(sol,prop);
-        System.out.println("le score est : " + res);
+        res = codeur.evaluerUneProposition(prop);
+        System.out.println("le score est : " + res.toString());
         //Assert
-        Assert.assertEquals("evaluerUneProposition 10", 20, res);
+        Assert.assertEquals("evaluerUneProposition 10", 20, res.toString());
     }
 
 }

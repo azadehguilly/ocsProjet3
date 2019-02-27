@@ -18,12 +18,12 @@ public abstract class CodeurCommun {
     /**
      * Verifie si la partie est gagnante pour le jeu recherche +/-
      *
-     * @param resultat
+     * @param rechercheResultat
      * @return vrai si la bonne réultat est trouvé
      */
-    public boolean isPartieGagnante(Resultat resultat) {
+    public boolean isPartieGagnante(RechercheResultat rechercheResultat) {
         boolean isFound = true;
-        for (String resultatAtColumn : resultat.getResultats()) {
+        for (String resultatAtColumn : rechercheResultat.getResultats()) {
             if (!"=".equals(resultatAtColumn)) {
                 isFound = false;
                 break;
@@ -38,9 +38,9 @@ public abstract class CodeurCommun {
      * @param resultat
      * @return vrai si la bonne réultat est trouvé
      */
-    public boolean isPartieGagnante(int resultat) {
+    public boolean isPartieGagnante(MastermindResultat resultat) {
         boolean isFound = false;
-        if (resultat == nbCase * 10)
+        if (resultat.getResultat() == nbCase * 10)
             isFound = true;
         return isFound;
     }

@@ -22,13 +22,13 @@ public class DecodeurHumain implements IDecodeur {
     /**
      * Propose une combinaison au console
      *
-     * @param resultat n'est pas utilisé dans cette classe
+     * @param rechercheResultat n'est pas utilisé dans cette classe
      * @return
      *      une proposition
      * @see Proposition
      */
     @Override
-    public Proposition proposerUneCombinaison(Resultat resultat) {
+    public Proposition proposerUneCombinaison(IResultat rechercheResultat) {
         Proposition proposition = new Proposition();
         DemandeInfo demandeInfo = new DemandeInfo();
         proposition = demandeInfo.demandecombinaisonRecherche();
@@ -50,12 +50,12 @@ public class DecodeurHumain implements IDecodeur {
      *
      * @param resultat
      * @return null
-     */
+
     @Override
     public Proposition proposerUneCombinaison(int resultat) {
         return null;
     }
-
+     */
     /**
      * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente IDecodeur.
      * La fonction est public pour être visible dans les tests unitaires.

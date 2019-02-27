@@ -14,10 +14,10 @@ public interface ICodeur {
      * Cette méthode nous donne le resultat d'un tour sous la forme +, - et =
      *
      * @param prop est la proposition de l'attaquant.
-     * @return un objet de type Resultat
-     * @see Resultat
+     * @return un objet de type RechercheResultat
+     * @see RechercheResultat
      */
-    public Resultat evaluerUneProposition(Proposition prop); //pour jeu recherche
+    public IResultat evaluerUneProposition(Proposition prop); //pour jeu recherche
 
     /**
      * Cette méthode nous donne le resultat d'un tour sous la forme d'un entier de 2 digits. le chiffre des dizaines étant égal au nombre de chiffre bien placés (pion rouge) et le chiffre des unités à celui des chiffres présents (pions blanches)
@@ -26,7 +26,16 @@ public interface ICodeur {
      * @param prop
      * @return
      */
-    public int calculScore(Proposition solutionGagnante, Proposition prop); //pour le jeu mastermind
+    //todo fusionner avec evaluerUneProposition
+    //public IResultat calculScore(Proposition solutionGagnante, Proposition prop); //pour le jeu mastermind
+
+    /**
+     * Verifie si le rechercheResultat est gagnant.
+     *
+     * @param rechercheResultat
+     * @return
+     */
+    public boolean isPartieGagnante(IResultat rechercheResultat);
 
     /**
      * Verifie si le resultat est gagnant.
@@ -34,15 +43,7 @@ public interface ICodeur {
      * @param resultat
      * @return
      */
-    public boolean isPartieGagnante(Resultat resultat);
-
-    /**
-     * Verifie si le resultat est gagnant.
-     *
-     * @param resultat
-     * @return
-     */
-    public boolean isPartieGagnante(int resultat);
+    //public boolean isPartieGagnante(int resultat);
 
     /**
      * Getteur de la solutionGagnante

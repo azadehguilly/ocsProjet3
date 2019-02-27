@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ResultatTest {
+public class RechercheResultatTest {
 
 
     @Test
@@ -16,10 +16,10 @@ public class ResultatTest {
         ArrayList<String> initArrayList = new ArrayList<String>(Arrays.asList(new String[]{"+", "=", "-", "-"}));
 
         //Act
-        Resultat resultat = new Resultat(initArrayList);
+        RechercheResultat rechercheResultat = new RechercheResultat(initArrayList);
 
         //Assert
-        Assert.assertEquals("Constructeur ) partir d'un Arrayist","+=--", resultat.toString());
+        Assert.assertEquals("Constructeur ) partir d'un Arrayist","+=--", rechercheResultat.toString());
 
     }
 
