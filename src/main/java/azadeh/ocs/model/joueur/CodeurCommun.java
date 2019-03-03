@@ -1,4 +1,7 @@
-package azadeh.ocs;
+package azadeh.ocs.model.joueur;
+
+import azadeh.ocs.model.jeu.MastermindResultat;
+import azadeh.ocs.model.jeu.RechercheResultat;
 
 import static azadeh.ocs.App.nbCase;
 
@@ -19,7 +22,9 @@ public abstract class CodeurCommun {
      * Verifie si la partie est gagnante pour le jeu recherche +/-
      *
      * @param rechercheResultat
-     * @return vrai si la bonne réultat est trouvé
+     *      resultat donnée que nous voulons de tester
+     * @return
+     *      vrai si la bonne réultat est trouvé
      */
     public boolean isPartieGagnante(RechercheResultat rechercheResultat) {
         boolean isFound = true;
@@ -36,7 +41,9 @@ public abstract class CodeurCommun {
      * Verifie si la partie est gagnante pour le jeu Mastermind
      *
      * @param resultat
-     * @return vrai si la bonne réultat est trouvé
+     *      resultat donnée que nous voulons de tester
+     * @return
+     *      vrai si la bonne réultat est trouvé
      */
     public boolean isPartieGagnante(MastermindResultat resultat) {
         boolean isFound = false;

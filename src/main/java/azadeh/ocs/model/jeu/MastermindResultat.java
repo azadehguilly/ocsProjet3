@@ -1,18 +1,32 @@
-package azadeh.ocs;
+package azadeh.ocs.model.jeu;
 
+/**
+ * Representation d'un résultat sous la forme d'un entier de 2 digits
+ *
+ * @author Azadeh GUILLY
+ * @version 1.0
+ */
 public class MastermindResultat implements IResultat {
+
+    /**
+     * resultat d'une proposition sous la forme d'un entier de 2 digits.
+     * Le chiffre des dizaines étant égal au nombre de chiffre bien placés et le chiffre des unités à celui des chiffres présents mais pas bien placés
+     */
     private int resultat;
 
+    /**
+     * Instancie le resultats, avec le resultat donnée en parametre
+     *
+     * @param resultat
+     *      le resultat donné
+     */
     public MastermindResultat(int resultat) {
         this.resultat = resultat;
     }
 
 
-    /**
-     * Afficher le resultat
-     *
-     * @return
-     */
+
+    @Override
     public String toString() {
         String  resultatAAfficher = "";
         String resultatString = Integer.toString(resultat);

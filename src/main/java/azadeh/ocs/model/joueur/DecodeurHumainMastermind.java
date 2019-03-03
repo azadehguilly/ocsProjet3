@@ -1,6 +1,8 @@
-package azadeh.ocs;
+package azadeh.ocs.model.joueur;
 
 import azadeh.ocs.affichage.DemandeInfo;
+import azadeh.ocs.model.jeu.IResultat;
+import azadeh.ocs.model.jeu.Proposition;
 
 import java.util.List;
 
@@ -17,7 +19,9 @@ public class DecodeurHumainMastermind implements IDecodeur {
      * Propose une combinaison au console
      *
      * @param resultat
-     * @@return une proposition
+     *      resultat
+     * @return
+     *      une proposition
      * @see Proposition
      */
     @Override
@@ -28,7 +32,6 @@ public class DecodeurHumainMastermind implements IDecodeur {
 
     /**
      * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente IDecodeur.
-     * La fonction est public pour être visible dans les tests unitaires.
      *
      * @param listePropo
      * @return null
@@ -38,17 +41,7 @@ public class DecodeurHumainMastermind implements IDecodeur {
         return null;
     }
 
-    /**
-     * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente IDecodeur.
-     *
-     * @param rechercheResultat
-     * @return null
 
-    @Override
-    public Proposition proposerUneCombinaison(RechercheResultat rechercheResultat) {
-        return null;
-    }
-     */
     /**
      * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente IDecodeur.
      *

@@ -1,7 +1,7 @@
 package azadeh.ocs.affichage;
 
-import azadeh.ocs.Proposition;
-import azadeh.ocs.RechercheResultat;
+import azadeh.ocs.model.jeu.Proposition;
+import azadeh.ocs.model.jeu.RechercheResultat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +18,6 @@ import static azadeh.ocs.App.symbols;
  * @version 1.0
  */
 public class DemandeInfo {
-
 
     /**
      * Demande d'une combinaison à l'utilisateur à l'écran pour le jeu de Recherche +/-
@@ -58,7 +57,6 @@ public class DemandeInfo {
     /**
      * Demande d'une combinaison de n chiffres en base demandé à l'utilisateur à l'écran pour le jeu de Mastermind
      * n chiffre, represente le nombre de trous et les chiffres en base demandé, represente les symboles possibles
-     * <p>
      * Si l'utilisateur tape des lettres ou moins de chiffre que prévu ou plus, un message d'erreur sera affiché à l'écran
      *
      * @return une Proposition
@@ -104,8 +102,10 @@ public class DemandeInfo {
      * Cette fonction demande à l'utilisateur d'évaluer une proposition donnée à l'écran pour le jeu de Recherche +/-
      * L'utilisateur indique pour chaque chiffre de la proposition si le chiffre est plus grand (+), plus petit (-) ou si c'est le bon chiffre (=).
      *
-     * @param prop Proposition à évaluer
-     * @return un objet RechercheResultat sous forme de +, - ou =
+     * @param prop
+     *      Proposition à évaluer
+     * @return
+     *      un objet RechercheResultat sous forme de +, - ou =
      * @see RechercheResultat
      */
     public RechercheResultat evaluerUnePropositionConsoleRecherche(Proposition prop) {
@@ -151,8 +151,10 @@ public class DemandeInfo {
      * Cette fonction demande à l'utilisateur d'évaluer une proposition donnée à l'écran pour le jeu de Mastermind
      * L'utilisateur indique pour chaque proposition le nombre de chiffre de la proposition qui apparaissent à la bonne place et à la mauvaise place dans la combinaison secrète.
      *
-     * @param prop Proposition à évaluer
-     * @return Un entier de 2 digit. le chiffre des dizaines étant égal au nombre de chiffre bien placés (pion rouge) et le chiffre des unités à celui des chiffres présents (pions blanches)
+     * @param prop
+     *      Proposition à évaluer
+     * @return
+     *      Un entier de 2 digit. le chiffre des dizaines étant égal au nombre de chiffre bien placés (pion rouge) et le chiffre des unités à celui des chiffres présents (pions blanches)
      */
     public int evaluerUnePropositionConsoleMastermind(Proposition prop) {
         boolean isIntValue;
@@ -178,6 +180,7 @@ public class DemandeInfo {
      * Cette méthode demande le nom de jeu au quel l'utilisateur veut jouer
      *
      * @return
+     *      le nom de jeu representé par un entier : 1. Recherche +/-     2. Mastermind    3. Sortir de platforme de jeux
      */
     public int demandeNomJeu() {
         int resultat = 0;
@@ -185,16 +188,16 @@ public class DemandeInfo {
         boolean isIntValue;
         do {
             sc = new Scanner(System.in);
-            System.out.println("A quel jeu voulez vous jouer?  1. Recherche +/-     2. Mastermind ");
+            System.out.println("A quel jeu voulez vous jouer?  1. Recherche +/-     2. Mastermind    3. Sortir de platforme de jeux");
             isIntValue = sc.hasNextInt();
             if (isIntValue) {
                 resultat = sc.nextInt();
-                System.out.println("resultat" + resultat);
+                //System.out.println("resultat" + resultat);
                 break;
             }
             System.out.println("La valeur saisie est fausse");
-            System.out.println("Tapez 1 ou 2");
-        } while (!isIntValue || resultat != 1 || resultat != 2);
+            System.out.println("Tapez 1, 2 ou 3");
+        } while (!isIntValue || resultat != 1 || resultat != 2 || resultat!= 3);
 
         return resultat;
     }
@@ -203,6 +206,7 @@ public class DemandeInfo {
      * Cette méthode demande le mode de jeu au quel l'utilisateur veut jouer
      *
      * @return
+     *      un entier representant le mode de jeu: 1. Challenger 2. Défenseur 3. Duel
      */
     public int demandeModeJeu() {
         int resultat = 0;

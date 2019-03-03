@@ -1,10 +1,13 @@
-package azadeh.ocs;
+package azadeh.ocs.model.jeu;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Representation d'un résultat sous la forme d'une séquence de + ou - ou =
+ *
+ * @author Azadeh GUILLY
+ * @version 1.0
  */
 public class RechercheResultat implements IResultat {
 
@@ -26,16 +29,14 @@ public class RechercheResultat implements IResultat {
      * Instancie le resultats, avec une liste donnée en parametre
      *
      * @param resultats
+     *      une liste avec la quelle on instancie le resultat
      */
     public RechercheResultat(ArrayList<String> resultats) {
         this.resultats = new ArrayList<>(resultats);
     }
 
-    /**
-     * Afficher le resultat
-     *
-     * @return
-     */
+
+   @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         int position = 0;
@@ -48,18 +49,12 @@ public class RechercheResultat implements IResultat {
         return stringBuilder.toString();
     }
 
-    /**
-     * Getteur de resultats
-     * @return
-     */
+
+
     public List<String> getResultats() {
         return resultats;
     }
 
-    /**
-     * Setteur de resultats
-     * @param resultats
-     */
     public void setResultats(List<String> resultats) {
         this.resultats = resultats;
     }

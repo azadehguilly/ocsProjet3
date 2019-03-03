@@ -1,5 +1,7 @@
 package azadeh.ocs;
 
+import azadeh.ocs.model.jeu.RechercheResultat;
+import azadeh.ocs.model.joueur.CodeurOrdinateur;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,8 +15,7 @@ public class CodeurCommunTest {
         //Arrange
         CodeurOrdinateur codeur = new CodeurOrdinateur();
 
-        ArrayList<String> initArrayList = new ArrayList<String>(Arrays.asList(new String[]{"+", "=", "-", "-"}));
-        // List<String> initArrayList = Arrays.asList("+", "=", "-", "-");
+        ArrayList<String> initArrayList = new ArrayList<String>(Arrays.asList(new String[]{"+", "=", "-"}));
 
         RechercheResultat rechercheResultat = new RechercheResultat(initArrayList);
         //Act
@@ -29,7 +30,7 @@ public class CodeurCommunTest {
         //Arrange
         CodeurOrdinateur codeur = new CodeurOrdinateur();
 
-        ArrayList<String> initArrayList = new ArrayList<String>(Arrays.asList(new String[]{"=", "=", "=", "="}));
+        ArrayList<String> initArrayList = new ArrayList<String>(Arrays.asList(new String[]{"=", "=", "="}));
         RechercheResultat rechercheResultat = new RechercheResultat(initArrayList);
         //Act
         boolean isFound = codeur.isPartieGagnante(rechercheResultat);

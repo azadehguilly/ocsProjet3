@@ -1,6 +1,9 @@
-package azadeh.ocs;
+package azadeh.ocs.model.joueur;
 
 import azadeh.ocs.affichage.DemandeInfo;
+import azadeh.ocs.model.jeu.IResultat;
+import azadeh.ocs.model.jeu.MastermindResultat;
+import azadeh.ocs.model.jeu.Proposition;
 
 /**
  * Le codeur est celui qui joue le role de defenseur pour le jeu Mastermind
@@ -18,9 +21,7 @@ public class CodeurHumainMastermind extends CodeurCommun implements ICodeur {
      */
     private Proposition solutionGagnante;
 
-    /**
-     * Générer la Solution gagnante par console
-     */
+
     @Override
     public void genereLaSolutionGagnante() {
         this.solutionGagnante = new Proposition();
@@ -29,13 +30,7 @@ public class CodeurHumainMastermind extends CodeurCommun implements ICodeur {
     }
 
 
-    /**
-     * Cette méthode nous donne le resultat d'un tour
-     *
-     * @param solutionGagnante La solution gagnante
-     * @param prop             La proposition de l'attaquant
-     * @return le resultat sous forme d'un entier de deux digits
-     */
+
     @Override
     public IResultat evaluerUneProposition(Proposition prop) {
         int resultat = 0;
@@ -51,48 +46,17 @@ public class CodeurHumainMastermind extends CodeurCommun implements ICodeur {
     }
 
 
-    /**
-     * Verifie si la resultat est gagnante.
-     *
-     * @param resultat
-     * @return
-     */
+
     @Override
     public boolean isPartieGagnante(IResultat resultat) {
-        return super.isPartieGagnante((MastermindResultat)resultat);
+        return super.isPartieGagnante((MastermindResultat) resultat);
     }
 
-    /**
-     * Getteur de solutionGagnante
-     *
-     * @return
-     */
+
     @Override
     public Proposition getSolutionGagnante() {
         return solutionGagnante;
     }
 
 
-    /**
-     * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente ICodeur.
-     *
-     * @param rechercheResultat
-     * @return false
-
-    @Override
-    public boolean isPartieGagnante(RechercheResultat rechercheResultat) {
-        return false;
-    }
-*/
-    /**
-     * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente ICodeur.
-     *
-     * @param prop
-     * @return null
-
-    @Override
-    public RechercheResultat evaluerUneProposition(Proposition prop) {
-        return null;
-    }
-*/
 }

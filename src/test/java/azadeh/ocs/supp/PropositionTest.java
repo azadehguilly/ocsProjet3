@@ -1,6 +1,6 @@
 package azadeh.ocs.supp;
 
-import azadeh.ocs.Proposition;
+import azadeh.ocs.model.jeu.Proposition;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,5 +1,9 @@
-package azadeh.ocs;
+package azadeh.ocs.model.joueur;
 
+import azadeh.ocs.model.jeu.IResultat;
+import azadeh.ocs.model.jeu.Possibilite;
+import azadeh.ocs.model.jeu.Proposition;
+import azadeh.ocs.model.jeu.RechercheResultat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +24,7 @@ public class DecodeurOrdinateur implements IDecodeur {
     /**
      * LOGGER sert à la mise en place des log
      */
-    private static final Logger LOGGER = LoggerFactory.getLogger(DecodeurOrdinateurMastermind.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(DecodeurOrdinateur.class.getName());
 
     /**
      * possibilite est un objet de type Possibilite qui contient toutes les possibilites.
@@ -41,6 +45,7 @@ public class DecodeurOrdinateur implements IDecodeur {
      * Initialise la matrice des possibilités
      *
      * @param possibilite
+     *      la matrice des possibilités
      */
     public DecodeurOrdinateur(Possibilite possibilite) {
         possibilite.initialiseToutesLesPossibilitesRecherche();
@@ -52,7 +57,9 @@ public class DecodeurOrdinateur implements IDecodeur {
      * Constructeur
      *
      * @param possibilite
+     *      la matrice des possibilités
      * @param derniereProposition
+     *      derniere proposition faite
      */
     public DecodeurOrdinateur(Possibilite possibilite, Proposition derniereProposition) {
         this.possibilite = possibilite;
@@ -68,13 +75,7 @@ public class DecodeurOrdinateur implements IDecodeur {
         this.derniereProposition = null;
     }
 
-    /**
-     * Met à jour la matrice des possibilité
-     * Fait une proposition par rapport à la nouvelle matrice des possibilités
-     *
-     * @param rechercheResultat
-     * @return
-     */
+
     @Override
     public Proposition proposerUneCombinaison(IResultat rechercheResultat) {
         Proposition proposition = new Proposition();
@@ -90,9 +91,10 @@ public class DecodeurOrdinateur implements IDecodeur {
     }
 
     /**
-     * Reduire les prossibilités par rapport au rechercheResultat et la derniereProposition
+     * Reduire les prossibilités par rapport au resultat et la derniereProposition
      *
      * @param rechercheResultat
+     *      dernière resultat donnée
      */
     public void reduireLesPossibilites(RechercheResultat rechercheResultat) {
         int numColonne = 0;
@@ -128,8 +130,10 @@ public class DecodeurOrdinateur implements IDecodeur {
      * Fait une proposition au hasard, parmis les possibilités existantes
      * Normelement cette methode doit être private. Il a etait mis en public pour poivoir faire des tests unitaire dessus.
      *
-     * @param possibiliteActuel la liste des possibilites à cette instant
+     * @param possibiliteActuel
+     *      la liste des possibilites à cette instant
      * @return
+     *      la possibilité choisi au hasard
      */
     public Proposition choisirUneCombinaison(Possibilite possibiliteActuel) {
         int rand;
@@ -146,27 +150,13 @@ public class DecodeurOrdinateur implements IDecodeur {
         return proposition;
     }
 
-    /**
-     * Setteur de derniereProposition
-     *
-     * @param derniereProposition
-     */
+
     @Override
     public void setDerniereProposition(Proposition derniereProposition) {
         this.derniereProposition = derniereProposition;
     }
 
-    /**
-     * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente IDecodeur.
-     *
-     * @param resultat
-     * @return null
 
-    @Override
-    public Proposition proposerUneCombinaison(int resultat) {
-        return null;
-    }
-     */
     /**
      * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente IDecodeur.
      *

@@ -1,5 +1,8 @@
-package azadeh.ocs;
+package azadeh.ocs.model.joueur;
 
+import azadeh.ocs.model.jeu.IResultat;
+import azadeh.ocs.model.jeu.MastermindResultat;
+import azadeh.ocs.model.jeu.Proposition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +40,7 @@ public class DecodeurOrdinateurMastermind implements IDecodeur {
      *
      * @see Proposition
      */
-    Proposition derniereProposition;
+    public Proposition derniereProposition;
 
     /**
      * Constructeur qui initialise la liste des proposition avec toutes les proposition possible
@@ -48,15 +51,8 @@ public class DecodeurOrdinateurMastermind implements IDecodeur {
         this.derniereProposition = null;
     }
 
-    /**
-     * Cette méthode propose une combinaison dans la liste des propositions
-     * Tout d'abord elle reduit la liste des propositions: elle met à jour la listePropositions en effacant les propositions qui ne repondent pas à la solution
-     * Ensuite elle choisit une proposition parmis la nouvelle liste
-     * Et elle met à jour la derniereProposition avec cette valeur
-     *
-     * @param resultat
-     * @return combinaison
-     */
+
+    @Override
     public Proposition proposerUneCombinaison(IResultat resultat) {
         List<String> symbolsAtColumn = new ArrayList<>();
         Random rand = new Random();
@@ -66,7 +62,7 @@ public class DecodeurOrdinateurMastermind implements IDecodeur {
 
         if (resultat != null) {
             //eliminer les possibiilités qui non pas le meme resultat
-            nouvelleListePropositions = reduireLaListeProposition(((MastermindResultat)resultat).getResultat(), this.listePropositions);
+            nouvelleListePropositions = reduireLaListeProposition(((MastermindResultat) resultat).getResultat(), this.listePropositions);
             this.listePropositions = nouvelleListePropositions;
         }
         LOGGER.debug("Apres la suppression, la taille de la nouvelle liste est  : " + nouvelleListePropositions.size());
@@ -88,8 +84,11 @@ public class DecodeurOrdinateurMastermind implements IDecodeur {
      * Cette méthode reduit la listProposition suivant un resultat
      *
      * @param resultat
+     *      la derniere resultat donnée
      * @param listePropositions
+     *      liste devoir reduit
      * @return
+     *      la nouvelle liste mise à jour qui a etait reduit suivant le resultat
      */
     private List<Proposition> reduireLaListeProposition(int resultat, List<Proposition> listePropositions) {
         List<Proposition> nouvelleListePropositions = new LinkedList<Proposition>(listePropositions);
@@ -114,13 +113,8 @@ public class DecodeurOrdinateurMastermind implements IDecodeur {
         return nouvelleListePropositions;
     }
 
-    /**
-     * Choisir une proposition au hasard dans la listePropo
-     * Cette fonction est public juste pour les tests unitaires, sinon il doit etre en private.
-     *
-     * @param listePropo
-     * @return
-     */
+
+    @Override
     public Proposition choisirUnPropositionAuHasard(List<Proposition> listePropo) {
         Proposition randomProposition = new Proposition();
         Random rand = new Random();
@@ -155,25 +149,11 @@ public class DecodeurOrdinateurMastermind implements IDecodeur {
 
     }
 
-    /**
-     * Setteur de derniereProposition
-     *
-     * @param derniereProposition
-     */
+
     @Override
     public void setDerniereProposition(Proposition derniereProposition) {
         this.derniereProposition = derniereProposition;
     }
 
-    /**
-     * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente IDecodeur.
-     *
-     * @param rechercheResultat
-     * @return null
 
-    @Override
-    public Proposition proposerUneCombinaison(RechercheResultat rechercheResultat) {
-        return null;
-    }
-     */
 }

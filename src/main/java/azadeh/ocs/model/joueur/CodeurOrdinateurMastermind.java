@@ -1,4 +1,8 @@
-package azadeh.ocs;
+package azadeh.ocs.model.joueur;
+
+import azadeh.ocs.model.jeu.IResultat;
+import azadeh.ocs.model.jeu.MastermindResultat;
+import azadeh.ocs.model.jeu.Proposition;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,24 +27,25 @@ public class CodeurOrdinateurMastermind extends CodeurCommun implements ICodeur 
      */
     private Proposition solutionGagnante;
 
+
     /**
      * Constructeur vide!
      */
     public CodeurOrdinateurMastermind() {
     }
 
+
     /**
      * Constructeur
      *
      * @param solutionGagnante
+     *      solution gagnante
      */
     public CodeurOrdinateurMastermind(Proposition solutionGagnante) {
         this.solutionGagnante = solutionGagnante;
     }
 
-    /**
-     * Générer la Solution gagnante aleatoir
-     */
+
     @Override
     public void genereLaSolutionGagnante() {
         this.solutionGagnante = new Proposition();
@@ -55,43 +60,13 @@ public class CodeurOrdinateurMastermind extends CodeurCommun implements ICodeur 
         this.solutionGagnante.setPropositions(symbolsAtColumn);
     }
 
-    /**
-     * Getteur de la solutionGagnante
-     *
-     * @return
-     */
-    public Proposition getSolutionGagnante() {
-        return solutionGagnante;
-    }
 
-    /**
-     * Setteur de la solutionGagnante
-     *
-     * @param solutionGagnante
-     */
-    public void setSolutionGagnante(Proposition solutionGagnante) {
-        this.solutionGagnante = solutionGagnante;
-    }
-
-
-    /**
-     * Verifie si le resultat est gagnant.
-     *
-     * @param resultat
-     * @return
-*/
     @Override
     public boolean isPartieGagnante(IResultat resultat) {
         return super.isPartieGagnante((MastermindResultat) resultat);
     }
 
-    /**
-     * Cette méthode nous donne le resultat d'un tour sous la forme d'un entier de 2 digits. le chiffre des dizaines étant égal au nombre de chiffre bien placés (pion rouge) et le chiffre des unités à celui des chiffres présents (pions blanches)
-     *
-     * @param solGagnante
-     * @param prop
-     * @return
-     */
+
     @Override
     public IResultat evaluerUneProposition(Proposition prop) {
         Proposition proposition = new Proposition();
@@ -99,26 +74,13 @@ public class CodeurOrdinateurMastermind extends CodeurCommun implements ICodeur 
         return new MastermindResultat(resultat);
     }
 
-    /**
-     * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente ICodeur.
-     *
-     * @param rechercheResultat
-     * @return false
-
-    @Override
-    public boolean isPartieGagnante(RechercheResultat rechercheResultat) {
-        return false;
+    public Proposition getSolutionGagnante() {
+        return solutionGagnante;
     }
-*/
-    /**
-     * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente ICodeur.
-     *
-     * @param prop
-     * @return null
 
-    @Override
-    public RechercheResultat evaluerUneProposition(Proposition prop) {
-        return null;
+    public void setSolutionGagnante(Proposition solutionGagnante) {
+        this.solutionGagnante = solutionGagnante;
     }
-*/
+
+
 }

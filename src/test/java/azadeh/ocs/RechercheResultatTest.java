@@ -1,5 +1,6 @@
 package azadeh.ocs;
 
+import azadeh.ocs.model.jeu.RechercheResultat;
 import org.junit.Assert;
 import org.junit.Test;
 

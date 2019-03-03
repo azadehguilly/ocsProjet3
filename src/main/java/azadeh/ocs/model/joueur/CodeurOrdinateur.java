@@ -1,4 +1,8 @@
-package azadeh.ocs;
+package azadeh.ocs.model.joueur;
+
+import azadeh.ocs.model.jeu.IResultat;
+import azadeh.ocs.model.jeu.Proposition;
+import azadeh.ocs.model.jeu.RechercheResultat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +27,7 @@ public class CodeurOrdinateur extends CodeurCommun implements ICodeur {
      */
     private Proposition solutionGagnante;
 
-    /**
-     * Générer la Solution gagnante aleatoir
-     */
+
     @Override
     public void genereLaSolutionGagnante() {
         this.solutionGagnante = new Proposition();
@@ -41,13 +43,6 @@ public class CodeurOrdinateur extends CodeurCommun implements ICodeur {
     }
 
 
-    /**
-     * Cette méthode nous donne le resultat d'un tour sous la forme +, - et =
-     *
-     * @param prop est la proposition de l'attaquant.
-     * @return un objet de type RechercheResultat
-     * @see RechercheResultat
-     */
     @Override
     public IResultat evaluerUneProposition(Proposition prop) {
         RechercheResultat rechercheResultat = new RechercheResultat();
@@ -64,56 +59,21 @@ public class CodeurOrdinateur extends CodeurCommun implements ICodeur {
     }
 
 
-    /**
-     * Verifie si le rechercheResultat est gagnant.
-     *
-     * @param rechercheResultat
-     * @return
-     */
     @Override
     public boolean isPartieGagnante(IResultat rechercheResultat) {
         return super.isPartieGagnante((RechercheResultat) rechercheResultat);
     }
 
-    /**
-     * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente ICodeur.
-     *
-     * @param resultat
-     * @return false
 
-    @Override
-    public boolean isPartieGagnante(int resultat) {
-        return false;
-    }
-*/
-    /**
-     * Getteur de la solutionGagnante
-     *
-     * @return
-     */
     @Override
     public Proposition getSolutionGagnante() {
         return solutionGagnante;
     }
 
-    /**
-     * Setteur de la solutionGagnante
-     * @param solutionGagnante
-     */
+
     public void setSolutionGagnante(Proposition solutionGagnante) {
         this.solutionGagnante = solutionGagnante;
     }
 
-    /**
-     * Cette methode n'est pas implementée pour cette classe. Elle existe ici car la classe implemente ICodeur.
-     *
-     * @param solutionGagnante
-     * @param prop
-     * @return 0
 
-    @Override
-    public int calculScore(Proposition solutionGagnante, Proposition prop) {
-        return 0;
-    }
-    */
 }

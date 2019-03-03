@@ -1,15 +1,27 @@
 package azadeh.ocs;
 
+import azadeh.ocs.model.jeu.IResultat;
+import azadeh.ocs.model.jeu.Proposition;
+import azadeh.ocs.model.joueur.CodeurOrdinateurMastermind;
+import azadeh.ocs.model.joueur.DecodeurOrdinateurMastermind;
+import azadeh.ocs.technique.LireFichierProperties;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import static azadeh.ocs.App.*;
 
 public class DecodeurOrdinateurMastermindTest {
 
     @Test
     public void verifieGenererListSequence(){
         //Arrange
+        LireFichierProperties lireFichierProperties = new LireFichierProperties();
+        lireFichierProperties.importerLesParametres();
+        symbols = new String[symbolsMastermindTable.length];
+        System.arraycopy(symbolsMastermindTable, 0, symbols, 0, symbolsMastermindTable.length);
+
         DecodeurOrdinateurMastermind decodeur = new DecodeurOrdinateurMastermind();
         String fragmentDepart = "";
 
@@ -25,6 +37,11 @@ public class DecodeurOrdinateurMastermindTest {
     @Test
     public void verifieChoisirUnPropositionAuHasard(){
         //Arrange
+        LireFichierProperties lireFichierProperties = new LireFichierProperties();
+        lireFichierProperties.importerLesParametres();
+        symbols = new String[symbolsMastermindTable.length];
+        System.arraycopy(symbolsMastermindTable, 0, symbols, 0, symbolsMastermindTable.length);
+
         DecodeurOrdinateurMastermind decodeur = new DecodeurOrdinateurMastermind();
         String fragmentDepart = "";
         decodeur.genererListSequence(fragmentDepart);
@@ -40,6 +57,13 @@ public class DecodeurOrdinateurMastermindTest {
     @Test
     public void verifieProposerUneCombinaisonPasPremiereFois(){
         //Arrange
+        LireFichierProperties lireFichierProperties = new LireFichierProperties();
+        lireFichierProperties.importerLesParametres();
+        //symbols = new String[symbolsRechercheTable.length];
+        //System.arraycopy(symbolsRechercheTable, 0, symbols, 0, symbolsRechercheTable.length);
+        symbols = new String[]{"0","1","2"};
+        nbCase = 3;
+
         DecodeurOrdinateurMastermind decodeur = new DecodeurOrdinateurMastermind();
 
         CodeurOrdinateurMastermind codeur = new CodeurOrdinateurMastermind();
@@ -71,6 +95,13 @@ public class DecodeurOrdinateurMastermindTest {
     @Test
     public void verifieProposerUneCombinaisonPremiereFois(){
         //Arrange
+        LireFichierProperties lireFichierProperties = new LireFichierProperties();
+        lireFichierProperties.importerLesParametres();
+        //symbols = new String[symbolsRechercheTable.length];
+        //System.arraycopy(symbolsRechercheTable, 0, symbols, 0, symbolsRechercheTable.length);
+        symbols = new String[]{"0","1","2"};
+        nbCase = 3;
+
         DecodeurOrdinateurMastermind decodeur = new DecodeurOrdinateurMastermind();
         CodeurOrdinateurMastermind codeur = new CodeurOrdinateurMastermind();
 

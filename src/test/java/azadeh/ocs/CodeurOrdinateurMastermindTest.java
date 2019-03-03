@@ -1,16 +1,29 @@
 package azadeh.ocs;
 
+import azadeh.ocs.model.jeu.IResultat;
+import azadeh.ocs.model.jeu.Proposition;
+import azadeh.ocs.model.joueur.CodeurOrdinateurMastermind;
+import azadeh.ocs.technique.LireFichierProperties;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static azadeh.ocs.App.*;
+
 public class CodeurOrdinateurMastermindTest {
 
     @Test
     public void verifierLaGenerationSolutionGagnanteMastermind() {
         //Arrange
+        LireFichierProperties lireFichierProperties = new LireFichierProperties();
+        lireFichierProperties.importerLesParametres();
+        //symbols = new String[symbolsRechercheTable.length];
+        //System.arraycopy(symbolsRechercheTable, 0, symbols, 0, symbolsRechercheTable.length);
+        symbols = new String[]{"0","1","2"};
+        nbCase = 3;
+
         CodeurOrdinateurMastermind codeur = new CodeurOrdinateurMastermind();
 
         //Act
@@ -24,6 +37,13 @@ public class CodeurOrdinateurMastermindTest {
     @Test
     public void verifiercalculScore10() {
         //Arrange
+        LireFichierProperties lireFichierProperties = new LireFichierProperties();
+        lireFichierProperties.importerLesParametres();
+        //symbols = new String[symbolsRechercheTable.length];
+        //System.arraycopy(symbolsRechercheTable, 0, symbols, 0, symbolsRechercheTable.length);
+        symbols = new String[]{"0","1","2"};
+        nbCase = 3;
+
         CodeurOrdinateurMastermind codeur = new CodeurOrdinateurMastermind();
         Proposition sol = new Proposition();
         Proposition prop = new Proposition();
@@ -39,7 +59,7 @@ public class CodeurOrdinateurMastermindTest {
         res = codeur.evaluerUneProposition(prop);
         System.out.println("le score est : " + res.toString());
         //Assert
-        Assert.assertEquals("evaluerUneProposition 10", 10, res.toString());
+        Assert.assertEquals("evaluerUneProposition 10", "1 bien placé", res.toString());
     }
 
 
@@ -47,6 +67,13 @@ public class CodeurOrdinateurMastermindTest {
     @Test
     public void verifiercalculScore30() {
         //Arrange
+        LireFichierProperties lireFichierProperties = new LireFichierProperties();
+        lireFichierProperties.importerLesParametres();
+        //symbols = new String[symbolsRechercheTable.length];
+        //System.arraycopy(symbolsRechercheTable, 0, symbols, 0, symbolsRechercheTable.length);
+        symbols = new String[]{"0","1","2"};
+        nbCase = 3;
+
         CodeurOrdinateurMastermind codeur = new CodeurOrdinateurMastermind();
         Proposition sol = new Proposition();
         Proposition prop = new Proposition();
@@ -62,11 +89,18 @@ public class CodeurOrdinateurMastermindTest {
         res = codeur.evaluerUneProposition(prop);
         System.out.println("le score est : " + res.toString());
         //Assert
-        Assert.assertEquals("evaluerUneProposition 30", 30, res.toString());
+        Assert.assertEquals("evaluerUneProposition 30", "3 bien placés", res.toString());
     }
 
     @Test
     public void verifiercalculScore20() {
+        LireFichierProperties lireFichierProperties = new LireFichierProperties();
+        lireFichierProperties.importerLesParametres();
+        //symbols = new String[symbolsRechercheTable.length];
+        //System.arraycopy(symbolsRechercheTable, 0, symbols, 0, symbolsRechercheTable.length);
+        symbols = new String[]{"0","1","2"};
+        nbCase = 3;
+
         //Arrange
         CodeurOrdinateurMastermind codeur = new CodeurOrdinateurMastermind();
         Proposition sol = new Proposition();
@@ -83,7 +117,7 @@ public class CodeurOrdinateurMastermindTest {
         res = codeur.evaluerUneProposition(prop);
         System.out.println("le score est : " + res.toString());
         //Assert
-        Assert.assertEquals("evaluerUneProposition 10", 20, res.toString());
+        Assert.assertEquals("evaluerUneProposition 20", "2 bien placés", res.toString());
     }
 
 }
