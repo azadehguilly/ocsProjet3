@@ -58,3 +58,5 @@ ou pour lancer le jeux en mode developpeur pour avoir le résultat dès le débu
 	2. de quitter l'application
 
 Pour plus de détail sur le jeu Mastermind vous pouvez consultez le site : https://fr.wikipedia.org/wiki/Mastermind
+
+Le github de ce projet est : https://github.com/azadehguilly/ocsProjet3
